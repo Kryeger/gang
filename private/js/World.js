@@ -11,7 +11,7 @@ module.exports = class World{
   }
   passTime(time){
     var interval = setInterval(function(){
-      _.forEach(S.companies, function(el, index, list){
+      _.forEach(this.companies, function(el, index, list){
         el.earn(10);
       });
       if(!time--) clearInterval(interval);

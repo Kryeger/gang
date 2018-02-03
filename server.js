@@ -186,7 +186,7 @@ io.on('connection', function(socket){
   });
   
   socket.on("create company > sv", function(arr){
-    var user = validate(arr[0].id, arr[0].key);
+    var user = U.validate(arr[0].id, arr[0].key);
     if(user){
       S.companies.push(new Company(arr[1].name, arr[1].capital, user[0].player));
       user[0].player.ownedCompanies.push(S.companies.length - 1);
