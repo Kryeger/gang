@@ -38,4 +38,12 @@ module.exports = class Faction{
         this.depts.push(Dept);
     }
     
+    getTotalMoney(){
+        var totalMoney = 0;
+        for(var i = 0; i < this.depts.length; ++i){
+            totalMoney += this.depts[i].money;
+        }
+        return totalMoney;
+    }
+    
 }

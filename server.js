@@ -69,7 +69,7 @@ con.connect(function(err){
 //  var myuser;
 //  fetch(["username", "hash", "userkey"], "users", [["id", 1]], function(result){
 //    myuser = result;
-//  });
+    //  });
   
 });
 
