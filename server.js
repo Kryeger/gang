@@ -27,6 +27,8 @@ const Companylist = require("./private/js/Companylist.js");
 const Faction = require("./private/js/Faction.js");
 const Factionlist = require("./private/js/Factionlist.js");
 const World = require("./private/js/World.js");
+const Businesslist = require("./private/js/Businesslist.js");
+const Business = require("./private/js/Business.js");
 
 //LOGGING
 
