@@ -1,5 +1,6 @@
 const User = require("./User.js");
 const List = require("./List.js");
+var _ = require('underscore');
 
 module.exports = class Userlist extends List{
   constructor(){

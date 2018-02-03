@@ -1,4 +1,7 @@
 mysql = require('mysql');
+const Util = require("./Util.js");
+var U = new Util();
+var _ = require('underscore');
 
 var con = mysql.createConnection({
   host: "den1.mysql5.gear.host",
@@ -32,7 +35,8 @@ module.exports = class User{
     con.query("SELECT player FROM users WHERE id = '" + this.userid + "'", function(err, result){
       if(err) throw err;
       if(result[0].player){
-        fetch(["firstName", "lastName"], "players", [["id", result[0].player]], function(result){
+        console.log("found a player");
+        U.fetch(["firstName", "lastName"], "players", [["id", result[0].player]], function(result){
           var player = new Player(result[0].firstName, result[0].lastName);
           cb(player);
         });

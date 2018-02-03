@@ -21,6 +21,7 @@ const Player = require("./private/js/Player.js");
 const User = require("./private/js/User.js");
 const List = require("./private/js/List.js");
 const Userlist = require("./private/js/Userlist.js");
+const Util = require("./private/js/Util.js");
 
 //LOGGING
 
@@ -180,6 +181,7 @@ class Item{
 //VARS
 
 var S = new World();
+var U = new Util();
 
 //FUNC
 
@@ -187,33 +189,6 @@ setInterval(function(){
   S.passTime(1);
   console.log(S.users);
 }, 5000);
-
-function fetch(fields, source, conditions, cb){
-  if(!fields || !source) return 0;
-  var str = "SELECT " + fields.join() + " FROM " + source + " ";
-  if(conditions.length){
-    str += "WHERE";
-    _.forEach(conditions, function(el, index, list){
-      str += (" `" + el[0] + "` = " + con.escape(el[1])); 
-      if(el.length == 3){
-        //0 = AND, 1 = OR
-        str += (el[2] == 0) ? " AND" : " OR";
-      }
-    });
-  }
-  var result = -1;
-  con.query(str, function(err, result){
-    if(err) throw err;
-    cb(result);
-  });
-}
-
-function validate(id, key){
-  var index = _.where(S.users, {userid: parseInt(id)});
-  if(index[0].userkey == key){
-    return index;
-  } return 0;
-}
 
 //MAIN
 
