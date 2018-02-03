@@ -1,7 +1,9 @@
 mysql = require('mysql');
 const Util = require("./Util.js");
-var U = new Util();
+const Player = require("./Player.js");
 var _ = require('underscore');
+
+var U = new Util();
 
 var con = mysql.createConnection({
   host: "den1.mysql5.gear.host",
