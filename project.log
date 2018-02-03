@@ -4,3 +4,6 @@
 19:58:40.148 WARN  UncaughtException:ReferenceError: _ is not defined 
 19:58:41.204 WARN  UncaughtException:ReferenceError: _ is not defined 
 20:15:14.021 WARN  UncaughtException:ReferenceError: Player is not defined 
+20:31:54.549 WARN  UncaughtException:ReferenceError: Companylist is not defined 
+20:35:30.278 WARN  UncaughtException:ReferenceError: Companylist is not defined 
+20:43:58.472 WARN  UncaughtException:TypeError: World is not a constructor 

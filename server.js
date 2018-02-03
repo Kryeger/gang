@@ -22,6 +22,9 @@ const User = require("./private/js/User.js");
 const List = require("./private/js/List.js");
 const Userlist = require("./private/js/Userlist.js");
 const Util = require("./private/js/Util.js");
+const Company = require("./private/js/Company.js");
+const Companylist = require("./private/js/Companylist.js");
+const World = require("./private/js/World.js");
 
 //LOGGING
 
@@ -69,112 +72,12 @@ con.connect(function(err){
 
 //CLASSES
 
-class Companylist extends List{
-  constructor(){
-    super();
-  }
-  remove(companyid){
-    this[companyid].disolve();
-    this.splice(companyid, 1);
-  }
-  insert(company){
-    this.push(company);
-  }
-}
-
-class npcWorker{
-  constructor(){
-    this.gender = chance.gender();
-    this.firstName = chance.first({gender: this.gender});
-    this.lastName = chance.last({gender: this.gender});
-    this.skill = chance.integer({min: 1, max: 100});
-  }
-  work(){
-    return (this.skill * chance.floating({min:0.5, max: 2}));
-  }
-}
-
-class NpcWorkerlist extends List{
-  constructor(){
-    super();
-  }
-  insert(npcWorker){
-    this.push(npcWorker);
-  }
-  remove(npcworkerid){
-    this[npcworkerid].fire();
-    this[npcworkerid].splice(npcworkerid, 0);
-  }
-}
-
-class Company{
-  constructor(name, capital, founder /*, type*/){
-    this.name = name;
-    
-    //id of the user
-    
-    this.founder = founder;
-    this.capital = capital;
-    //FIXME: change type
-    this.type = "company";
-    //private
-    this._baseProfit = 10;
-    this._npcWorkerList = new NpcWorkerlist();
-  }
-  //NOTE: just temp funcs to test stuff out
-  earn(){
-    var income = 0;
-    //npc earnings
-    _.forEach(this._npcWorkerList, function(el, index, list){
-      income += el.work();
-    });
-    this.capital += income;
-  }
-  hireNpc(){
-    this._npcWorkerList.insert(new npcWorker());
-  }
-  save(){
-    
-  }
-  disolve(){
-    //TODO:Stuff to do before deleting everything
-  }
-}
-
 class Log{
   constructor(text){
     this.text = text;
   }
   print(){
     console.log(" -<Log>- \n" + this.text);
-  }
-}
-
-class World{
-  constructor(){
-    //TODO: queries
-    this.users = new Userlist;
-    this.companies = new Companylist;
-  }
-  passTime(time){
-    var interval = setInterval(function(){
-      _.forEach(S.companies, function(el, index, list){
-        el.earn(10);
-      });
-      if(!time--) clearInterval(interval);
-    }, 1000);
-  }
-  static init(){
-    //TODO: fetch info from db to populate the Lists
-    
-  }
-}
-
-class Item{
-  constructor(type, count){
-    //TODO: validation for types here
-    this.type = type;
-    this.count = count;
   }
 }
 
