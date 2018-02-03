@@ -137,3 +137,5 @@
 14:37:15.392 WARN  UncaughtException:ReferenceError: _ is not defined 
 14:37:20.079 WARN  UncaughtException:ReferenceError: _ is not defined 
 14:37:21.362 WARN  UncaughtException:ReferenceError: fetch is not defined 
+18:44:25.189 WARN  UncaughtException:ReferenceError: _ is not defined 
+18:44:26.115 WARN  UncaughtException:ReferenceError: fetch is not defined 
