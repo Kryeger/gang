@@ -30,6 +30,7 @@ const Department = require("./private/js/Department.js");
 const World = require("./private/js/World.js");
 const Businesslist = require("./private/js/Businesslist.js");
 const Business = require("./private/js/Business.js");
+const Brothel = require("./private/js/Brothel.js");
 
 //LOGGING
 
@@ -194,5 +195,8 @@ io.on('connection', function(socket){
       socket.to(socketid).emit("update company list > cl", _.where(S.companies, {founder: user[0]}));
     }
   })
+  
+  var biz = new Brothel(1, "test", 100);
+  
 });
 

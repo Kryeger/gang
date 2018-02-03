@@ -1,24 +1,18 @@
 const Userlist = require("./Userlist.js");
 const Companylist = require("./Companylist.js");
 const Businesslist = require("./Businesslist.js");
+const Factionlist = require("./Factionlist.js");
 var _ = require('underscore');
 
 module.exports = class World{
   constructor(){
     //TODO: queries
     this.users = new Userlist;
-    this.companies = new Companylist;
+    this.cl = new Companylist;
+    this.bl = new Businesslist;;
+    this.fl = new Factionlist;
   }
-  passTime(time){
-    var interval = setInterval(function(){
-      _.forEach(this.companies, function(el, index, list){
-        el.earn(10);
-      });
-      if(!time--) clearInterval(interval);
-    }, 1000);
-  }
-  static init(){
-    //TODO: fetch info from db to populate the Lists
+  init(){
     
   }
 }

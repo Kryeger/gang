@@ -8,6 +8,6 @@ module.exports = class Brothel extends Business{
     this.gain();
   }
   gain(){
-    console.log("test");
+    console.log("test" + this.type);
   }
 }

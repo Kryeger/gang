@@ -35,3 +35,4 @@
 22:06:15.011 WARN  UncaughtException:ReferenceError: S is not defined 
 22:12:42.141 WARN  UncaughtException:ReferenceError: S is not defined 
 22:18:22.134 WARN  UncaughtException:ReferenceError: validate is not defined 
+22:30:00.752 WARN  UncaughtException:ReferenceError: Brothel is not defined 

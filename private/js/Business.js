@@ -6,12 +6,10 @@ module.exports = class Business{
   
     this._workers = []; //playerids for all workers
   }
-  gain(){
-    _.forEach(_workers, function(el, index, list){
-      this.capital += 5; //temp
-    });
+  hire(playerid){
+    this._workers.push(playerid);
   }
   fire(playerid){
-    this._workers.splice(this._workers(playerid), 1);
+    this._workers.splice(this._workers.indexOf(playerid), 1);
   }
 }
