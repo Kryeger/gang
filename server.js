@@ -104,7 +104,6 @@ var U = new Util();
 //FUNC
 
 setInterval(function(){
-  S.passTime(1);
   console.log(S.users);
 }, 5000);
 
