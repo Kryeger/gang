@@ -37,3 +37,17 @@
 22:18:22.134 WARN  UncaughtException:ReferenceError: validate is not defined 
 22:33:09.709 WARN  UncaughtException:TypeError: Cannot read property 'addMemberToDep' of undefined 
 22:53:42.266 WARN  UncaughtException:TypeError: Cannot create property 'id' on string 'Sec' 
+18:12:30.282 WARN  UncaughtException:ReferenceError: userId is not defined 
+18:12:34.701 WARN  UncaughtException:TypeError: S.passTime is not a function 
+18:13:15.336 WARN  UncaughtException:TypeError: S.passTime is not a function 
+18:13:39.424 WARN  UncaughtException:Error: listen EADDRINUSE :::80 
+18:22:36.626 WARN  UncaughtException:TypeError: S.passTime is not a function 
+18:23:19.181 WARN  UncaughtException:TypeError: S.passTime is not a function 
+18:24:03.027 WARN  UncaughtException:TypeError: S.passTime is not a function 
+18:25:38.810 WARN  UncaughtException:TypeError: S.passTime is not a function 
+18:27:19.718 WARN  UncaughtException:TypeError: S.passTime is not a function 
+18:28:02.240 WARN  UncaughtException:TypeError: S.passTime is not a function 
+18:28:27.759 WARN  UncaughtException:TypeError: S.passTime is not a function 
+18:29:29.848 WARN  UncaughtException:TypeError: S.passTime is not a function 
+18:30:28.145 WARN  UncaughtException:TypeError: S.passTime is not a function 
+18:33:22.531 WARN  UncaughtException:TypeError: S.passTime is not a function 

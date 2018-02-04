@@ -1,23 +1,9 @@
-mysql = require('mysql');
 const Util = require("./Util.js");
 const Player = require("./Player.js");
 const Department = require("./Department.js");
 var _ = require('underscore');
 
 var U = new Util();
-
-var con = mysql.createConnection({
-    host: "den1.mysql5.gear.host",
-    user: "gang",
-    password: "browntacocat123!",
-    database : 'gang'
-});
-
-con.connect(function(err){
-    if (err) {
-        throw err;
-    }
-});
 
 module.exports = class Faction{
     
@@ -29,7 +15,7 @@ module.exports = class Faction{
         this.depts = departments; // array of Department(s)
     }
     
-    addMember(PlayerObj, depId){
+    addMember(userId, depId){
         if(depId < 0 || depId >= this.depts.length) return 0;
         this.depts[depId].addMemberToDept(userId);
     }
@@ -47,6 +33,12 @@ module.exports = class Faction{
         }
         if(depId < -1 || depId >= this.depts.length) return 0;
         return this.depts[depId].removeFromDept(memId);
+    }
+    
+    // setters
+    
+    setId(newid){
+        this.id = newid;
     }
     
     // getters
