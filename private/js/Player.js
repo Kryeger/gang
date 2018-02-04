@@ -7,10 +7,12 @@ module.exports = class Player{
     this.title = "";
     
     this._employer = []; //ids of businesses that employ the player;
+    this._ownedBis = [];
+    this._ownedComp = [];
   }
   getFormalName(){
     if(this.title != "")
-      return (this.title + " " + this.firstName + " " + this.lastName);"")
+      return (this.title + " " + this.firstName + " " + this.lastName);
     return (this.firstName + " " + this.lastName);
   }
   getJob(businessid){

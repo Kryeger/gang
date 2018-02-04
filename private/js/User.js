@@ -26,6 +26,7 @@ module.exports = class User{
     this.sockets = [];//TODO: maybe make this a class as well
     this.sockets.push(socket);
     
+    
     var classptr = this;
     this.setPlayer(function(player){
       classptr.player = player;

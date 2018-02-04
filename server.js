@@ -69,11 +69,6 @@ con.connect(function(err){
     throw err;
   }
   console.log("Connected!");
-//  var myuser;
-//  fetch(["username", "hash", "userkey"], "users", [["id", 1]], function(result){
-//    myuser = result;
-    //  });
-  
 });
 
 //CLASSES
@@ -95,8 +90,7 @@ var U = new Util();
 //FUNC
 
 setInterval(function(){
-  S.passTime(1);
-  console.log(S.users);
+  console.log(S.ul);
 }, 5000);
 
 //MAIN
@@ -149,7 +143,7 @@ io.on('connection', function(socket){
         io.to(socketid).emit("checkAccExists > cl", {error: 0});
         //logged in
         //users[result[0].id] = new User(result[0].id, result[0].username, socketid, 0);//TODO: handle player ids
-        S.users.insert(result[0], socketid);
+        S.ul.insert(result[0], socketid);
       } else {
         io.to(socketid).emit("checkAccExists > cl", {error: "Error"});
       }
@@ -179,11 +173,11 @@ io.on('connection', function(socket){
   //LOGOUT
   
   socket.on("disconnect", function(){
-    S.users.removeSocket(socket.id);
+    S.ul.removeSocket(socket.id);
   });
   
   socket.on("logout > sv", function(userid){
-    S.users.removeUser(userid);
+    S.ul.removeUser(userid);
   });
   
   socket.on("create company > sv", function(arr){
@@ -196,7 +190,9 @@ io.on('connection', function(socket){
     }
   })
   
-  var biz = new Brothel(1, "test", 100);
+  //
   
 });
+  S.createNewBusiness("Asd qwe", "Hot Stuff", 100, "brothel");
+  S.createNewBusiness("ZXC As", "W/e", 100, "taxi");
 

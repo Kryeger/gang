@@ -1,10 +1,13 @@
 module.exports = class Business{
-  constructor(owner, name, capital){
+  constructor(ownerid, name, capital){
     this.name = name;
     this.capital = capital;
-    this.owner = owner;
+    this.ownerid = ownerid;
   
     this._workers = []; //playerids for all workers
+    this._assets = []; //real-estate
+    this._inventory = []; //items
+    this._safe = []; //temp
   }
   hire(playerid){
     this._workers.push(playerid);

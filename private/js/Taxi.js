@@ -1,11 +1,11 @@
 const Business = require("./Business.js");
 ul = require("./Business.js");
 
-module.exports = class Brothel extends Business{
+module.exports = class Taxi extends Business{
   constructor(ownerid, name, capital){
     super(ownerid, name, capital);
-    this.workerTitle = "Escort";
-    this.type = "Brothel";
+    this.workerTitle = "Taxi Driver";
+    this.type = "Taxi";
   }
   gain(){
     this.capital += 100;
