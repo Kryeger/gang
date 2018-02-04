@@ -8,8 +8,18 @@ module.exports = class Department{
         this.money = money;
     }
 
-    addMemberToDep(memid){
+    addMemberToDept(memid){
         this.members.push(memid);
+    }
+    
+    removeFromDept(memid){
+        for(var i = 0; i < this.members.length; ++i){
+            if(this.members[i] == memid){
+                this.members.splice(i, 1);
+                return 1;
+            }
+        }
+        return 0;
     }
 
 }

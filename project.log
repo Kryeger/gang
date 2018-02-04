@@ -35,3 +35,5 @@
 22:06:15.011 WARN  UncaughtException:ReferenceError: S is not defined 
 22:12:42.141 WARN  UncaughtException:ReferenceError: S is not defined 
 22:18:22.134 WARN  UncaughtException:ReferenceError: validate is not defined 
+22:33:09.709 WARN  UncaughtException:TypeError: Cannot read property 'addMemberToDep' of undefined 
+22:53:42.266 WARN  UncaughtException:TypeError: Cannot create property 'id' on string 'Sec' 

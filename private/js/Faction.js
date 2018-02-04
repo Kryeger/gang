@@ -29,14 +29,27 @@ module.exports = class Faction{
         this.depts = departments; // array of Department(s)
     }
     
-    addMember(userId, depId){
-        this.depts[depId].addMemberToDep(userId);
+    addMember(PlayerObj, depId){
+        if(depId < 0 || depId >= this.depts.length) return 0;
+        this.depts[depId].addMemberToDept(userId);
     }
     
     addDept(Dept){
         Dept.id = this.depts.length;
         this.depts.push(Dept);
     }
+    
+    removeMember(memId, depId = -1){
+        if(depId == -1){
+            for(var i = 0; i < this.depts.length; ++i){
+                if(this.depts[i].removeFromDept(memId)) return 1;
+            }
+        }
+        if(depId < -1 || depId >= this.depts.length) return 0;
+        return this.depts[depId].removeFromDept(memId);
+    }
+    
+    // getters
     
     getMoney(){
         var totalMoney = 0;
@@ -48,7 +61,10 @@ module.exports = class Faction{
     
     getMembers(){
         var allMembers = [];
-        
+        for(var i = 0; i < this.depts.length; ++i){
+            allMembers = allMembers.concat(this.depts[i].members);
+        }
+        return allMembers;
     }
     
 }

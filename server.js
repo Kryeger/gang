@@ -72,6 +72,9 @@ con.connect(function(err){
 //  fetch(["username", "hash", "userkey"], "users", [["id", 1]], function(result){
 //    myuser = result;
     //  });
+    var Fact = new Faction(0, "Some Gang", 2, 1);
+    Fact.addMember(0, 0);
+    console.log("members: ", Fact.getMembers());
   
 });
 
