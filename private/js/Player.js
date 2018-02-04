@@ -7,8 +7,8 @@ module.exports = class Player{
     this.title = "";
     
     this._employer = []; //ids of businesses that employ the player;
-    this._ownedBis = [];
-    this._ownedComp = [];
+    this._ownedBis = []; //ids
+    this._ownedComp = []; //ids
   }
   getFormalName(){
     if(this.title != "")

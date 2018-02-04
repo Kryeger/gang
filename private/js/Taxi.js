@@ -1,5 +1,4 @@
 const Business = require("./Business.js");
-ul = require("./Business.js");
 
 module.exports = class Taxi extends Business{
   constructor(ownerid, name, capital){
