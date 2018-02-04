@@ -1,6 +1,12 @@
 var _ = require('underscore');
 
 module.exports = class List extends Array{
+    
+    constructor(){
+        super();
+        this.lastid = 0;
+    }
+    
   save(){
     _.forEach(this, function(el, index, list){
       //TODO: individual queries? or just a big one?

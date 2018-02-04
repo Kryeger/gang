@@ -4,7 +4,6 @@ const List = require("./List.js");
 module.exports = class Factionlist extends List{
   constructor(){
     super();
-    this.lastid = 0;
   }
     
     insert(faction){
