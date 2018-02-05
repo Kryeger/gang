@@ -23,18 +23,42 @@ module.exports = class World{
     this.bl = new Businesslist;
     this.fl = new Factionlist;
   }
+  
+  validate(id, key){//checks if the pair is valid
+    var index = _.where(this.ul, {id: parseInt(id)});
+    if(index[0].userkey == key){
+      return index;
+    } return 0;
+  }
+  
+  findObj(id, list){ //returns the object who has the .id == id
+    return _.where(list, {id: parseInt(id)})[0].player;
+  }
+  
+  findCurrentId(id, list){ //returns the index of the object who has the .id == id
+    return _.findLastIndex(list, {id: parseInt(id)});
+  }
+  
   createNewBusiness(ownerid, name, capital, type){
+    var nb;
     switch(type){
       //TODO: make this better
       case "brothel":
-        var nb = new Brothel(ownerid, name, capital);
+        nb = new Brothel(ownerid, name, capital);
         break;
       case "taxi":
-        var nb = new Taxi(ownerid, name, capital);
+        nb = new Taxi(ownerid, name, capital);
         break;
     }
     this.bl.insert(nb);
-    this.ul[ownerid].ownedBis.push(this.bl.length - 1);
-    console.log(this.bl);
+    this.findObj(ownerid, this.ul).acquireNewBusiness(this.bl[this.bl.length - 1].id);
+  }
+  
+  closeBusiness(id){
+    var bisid = this.findCurrentId(id, this.bl);
+    var bis = this.findObj(id, this.bl);
+    
+    //TODO: pay cash, sell stuff idk
+    this.bl.remove(bisid);
   }
 }

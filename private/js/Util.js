@@ -29,11 +29,6 @@ module.exports = class Util{
   });
 }
   
-  validate(id, key){
-  var index = _.where(S.users, {userid: parseInt(id)});
-  if(index[0].userkey == key){
-    return index;
-  } return 0;
-}
+  
   
 }

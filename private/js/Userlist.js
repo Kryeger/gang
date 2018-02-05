@@ -35,6 +35,6 @@ module.exports = class Userlist extends List{
   }
   getPlayerName(userid){
     var user = _.where(this, {userid: userid});
-    return user.firstName + " " + user.lastName;
+    return user.player.getFormalName();
   }
 }

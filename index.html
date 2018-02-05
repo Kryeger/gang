@@ -16,15 +16,20 @@
     <script src="/js/cl-main.js"></script>
     <script src="/js/cl-register.js"></script>
     <script src="/js/cl-login.js"></script>
-    <script src="/js/cl-company.js"></script>
+    <script src="/js/cl-business.js"></script>
     <script src="/js/cl-faction.js"></script>
   </head>
   <body>
     
   <div>
-    <input for="companyName" type="text">
+    <hr>
+    <input for="businessName" type="text">
     <input for="capital" type="number">
-    <h2 do="createCompany">Create company</h2>
+    <button do="createBusiness">Create Business</button>
+    <hr>
+    <input for="businessId">
+    <button do="closeBusiness">Close Business</button>
+    <hr>
   </div>
     
   <ul for="companyList"></ul>

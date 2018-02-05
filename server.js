@@ -104,7 +104,8 @@ var U = new Util();
 //FUNC
 
 setInterval(function(){
-  console.log(S.users);
+  console.log(S.ul);
+  console.log(S.bl);
 }, 5000);
 
 //MAIN
@@ -157,7 +158,7 @@ io.on('connection', function(socket){
         io.to(socketid).emit("checkAccExists > cl", {error: 0});
         //logged in
         //users[result[0].id] = new User(result[0].id, result[0].username, socketid, 0);//TODO: handle player ids
-        S.users.insert(result[0], socketid);
+        S.ul.insert(result[0], socketid);
       } else {
         io.to(socketid).emit("checkAccExists > cl", {error: "Error"});
       }
@@ -187,21 +188,26 @@ io.on('connection', function(socket){
   //LOGOUT
   
   socket.on("disconnect", function(){
-    S.users.removeSocket(socket.id);
+    S.ul.removeSocket(socket.id);
   });
   
   socket.on("logout > sv", function(userid){
-    S.users.removeUser(userid);
+    S.ul.removeUser(userid);
   });
   
-  socket.on("create company > sv", function(arr){
-    var user = U.validate(arr[0].id, arr[0].key);
+  socket.on("create business > sv", function(arr){
+    var user = S.validate(arr[0].id, arr[0].key);
     if(user){
-      S.companies.push(new Company(arr[1].name, arr[1].capital, user[0].player));
-      user[0].player.ownedCompanies.push(S.companies.length - 1);
-      console.log(_.where(S.companies, {founder: user[0]}));
-      socket.to(socketid).emit("update company list > cl", _.where(S.companies, {founder: user[0]}));
+      S.createNewBusiness(arr[0].id, "testbiz", 100, "taxi");
     }
   })
+  
+  socket.on("close business > sv"), function(arr){
+    var user = S.validate(arr[0].id, arr[0].key);
+    if(user){
+      S.closeBusiness(arr[1].id);
+    }
+  }
+  
 });
 

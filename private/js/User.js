@@ -19,8 +19,8 @@ con.connect(function(err){
 });
 
 module.exports = class User{
-  constructor(userid, username, userkey, socket, firstName, lastName){
-    this.userid = userid;
+  constructor(id, username, userkey, socket, firstName, lastName){
+    this.id = id;
     this.username = username;
     this.userkey = userkey;
     this.sockets = [];//TODO: maybe make this a class as well
@@ -33,14 +33,14 @@ module.exports = class User{
     });
   }
   setPlayer(cb){
-    var id = this.userid;
+    var id = this.id;
     //check if user already has a player
-    con.query("SELECT player FROM users WHERE id = '" + this.userid + "'", function(err, result){
+    con.query("SELECT player FROM users WHERE id = '" + this.id + "'", function(err, result){
       if(err) throw err;
       if(result[0].player){
         console.log("found a player");
         U.fetch(["firstName", "lastName"], "players", [["id", result[0].player]], function(result){
-          var player = new Player(result[0].firstName, result[0].lastName);
+          var player = new Player(result[0].firstName, result[0].lastName, id);
           cb(player);
         });
       } else {
