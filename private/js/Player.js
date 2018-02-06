@@ -6,6 +6,7 @@ module.exports = class Player{
     this.lastName = lastName;
     this.title = "";
     this.id;
+    this.fullName = this.getFormalName();
     
     this._employer = []; //ids of businesses that employ the player;
     this._ownedBis = []; //ids
@@ -28,7 +29,11 @@ module.exports = class Player{
   
   acquireNewBusiness(id){
     this._ownedBis.push(id);
-    console.log("First biz:" + this._ownedBis[0]);
-    console.log("Second biz:" + this._ownedBis[1]);
   }
+  
+  closeBusiness(id){
+    var x = this._ownedBis.indexOf(parseInt(id));
+    this._ownedBis.splice(x, 1);
+  }
+  
 }

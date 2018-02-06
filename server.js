@@ -104,9 +104,9 @@ var U = new Util();
 //FUNC
 
 setInterval(function(){
-  console.log(S.ul);
-  console.log(S.bl);
-}, 5000);
+  //console.log(S.ul);
+  //console.log(S.bl);
+}, 10000);
 
 //MAIN
 
@@ -198,16 +198,30 @@ io.on('connection', function(socket){
   socket.on("create business > sv", function(arr){
     var user = S.validate(arr[0].id, arr[0].key);
     if(user){
-      S.createNewBusiness(arr[0].id, "testbiz", 100, "taxi");
+      S.createNewBusiness(arr[0].id, arr[1].name, arr[1].capital, arr[1].type);
     }
-  })
+  });
   
-  socket.on("close business > sv"), function(arr){
+  socket.on("close business > sv", function(arr){
     var user = S.validate(arr[0].id, arr[0].key);
     if(user){
       S.closeBusiness(arr[1].id);
     }
-  }
+  });
+  
+  socket.on("refresh business list > sv", function(arr){
+    var user = S.validate(arr[0].id, arr[0].key);
+    if(user){
+      io.to(socketid).emit("refresh business list > cl", S.bl);
+    }
+  });
+  
+  socket.on("refresh player list > sv", function(arr){
+    var user = S.validate(arr[0].id, arr[0].key);
+    if(user){
+      io.to(socketid).emit("refresh player list > cl", S.ul);
+    }
+  });
   
 });
 

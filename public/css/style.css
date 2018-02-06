@@ -1,0 +1,13 @@
+
+.businessList {
+  flex: 1;
+}
+
+.playerList {
+  flex: 1;
+}
+
+.lists {
+  display: flex;
+  flex-direction: row;
+}

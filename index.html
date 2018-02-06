@@ -25,14 +25,24 @@
     <hr>
     <input for="businessName" type="text">
     <input for="capital" type="number">
+    <input for="businessType" type="text">
     <button do="createBusiness">Create Business</button>
     <hr>
     <input for="businessId">
     <button do="closeBusiness">Close Business</button>
     <hr>
+    <div class="lists">
+      <div class="businessList">
+        <button do="refreshBusinessList">Refresh list</button>
+        <ul for="businessList"></ul>
+      </div>
+      <div class="playerList">
+        <button do="refreshPlayerList">Refresh list</button>
+        <ul for="playerList"></ul>
+      </div>
+    </div>
   </div>
     
-  <ul for="companyList"></ul>
     
   </body>
 </html>

@@ -36,7 +36,7 @@ module.exports = class World{
   }
   
   findCurrentId(id, list){ //returns the index of the object who has the .id == id
-    return _.findLastIndex(list, {id: parseInt(id)});
+    return _.findIndex(list, {id: parseInt(id)});
   }
   
   createNewBusiness(ownerid, name, capital, type){
@@ -51,14 +51,18 @@ module.exports = class World{
         break;
     }
     this.bl.insert(nb);
-    this.findObj(ownerid, this.ul).acquireNewBusiness(this.bl[this.bl.length - 1].id);
+    this.findObj(ownerid, this.ul).acquireNewBusiness(nb.id);
   }
   
   closeBusiness(id){
     var bisid = this.findCurrentId(id, this.bl);
-    var bis = this.findObj(id, this.bl);
+    var bis = this.bl[bisid];
+    
+    var owner = this.findObj(bis.ownerid, this.ul);
+    owner.closeBusiness(id);
     
     //TODO: pay cash, sell stuff idk
     this.bl.remove(bisid);
+    
   }
 }
