@@ -181,7 +181,7 @@ $(function () {
                 if($(this).find(".changelogChangeType[chlogType]").length){
                     newUpdate.type = $(this).find(".changelogChangeType[chlogType]").attr("chlogType");
                 }
-                newUpdate.content = $(".changelogChangeText").html();
+                newUpdate.content = $(this).find(".changelogChangeText").html();
                 newEntry.updates.push(newUpdate);
             });
             CHANGELOG.unshift(newEntry);
