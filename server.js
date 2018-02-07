@@ -202,6 +202,16 @@ io.on('connection', function(socket){
       console.log(_.where(S.companies, {founder: user[0]}));
       socket.to(socketid).emit("update company list > cl", _.where(S.companies, {founder: user[0]}));
     }
-  })
+  });
+    
+    //CHANGELOG
+
+    var fs = require('fs');
+    socket.on("changelog > sv", function(data){ //SAVE
+        fs.writeFile("./public/js/changelog/changelogDB.js", data.content, (err) => {
+            if (err) throw err;
+            console.log('Changelog updated!');
+        });
+    });
 });
 

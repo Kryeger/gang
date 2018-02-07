@@ -5,6 +5,7 @@
     <title>GANG*</title>
     <meta name="viewport" content="width=device-width">
     <link href="https://fonts.googleapis.com/css?family=Muli:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="/css/gang.css">
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
@@ -20,6 +21,8 @@
     <script src="/js/cl-login.js"></script>
     <script src="/js/cl-company.js"></script>
     <script src="/js/cl-faction.js"></script>
+    <script src="/js/changelog/changelogDB.js"></script>
+    <script src="/js/changelog/changelog.js"></script>
   </head>
   <body>
       <div class="gameVersion select">v0.0.0</div>
@@ -33,6 +36,7 @@
   <ul for="companyList"></ul>
 -->
       <div class="gameWindow">
+          
           <div class="firstScreen">
               <div class="firstScreenLogo"> 
                   
@@ -99,6 +103,112 @@
                     </div>
               </div>
         </div>
+          
+          
+          <!-- 
+          <div class="changelogScreen">
+              
+              <div class="changelogScreenTop">
+                  <div class="changelogScreenTopLeft">
+                      <div class="title">Changelog</div>
+                      <div class="title-desc">See what's new and what has changed</div>
+                  </div>
+                  <div class="changelogScreenTopRight">
+                      <div class="buttonsWrap">
+                          <div class="button_1 sec" do="newChangelogEntry">New Entry</div>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="changelogScreenWrapper">
+
+                  <div class="changelogGroupWrap" newEntry editEntry>
+                      <div class="changelogTitle">
+                          <input class="input_1" name="changelogEntryTitle" placeholder="Entry Title" style="flex: 2; margin-right: 5px;">
+                          <input class="input_1" name="changelogEntryDate" placeholder="Entry Date" style="flex: 1;">
+                          <div class="changelogTitleNewEntryAutoDate" do="changelogTogAutoDate">Auto</div>
+                      </div>
+                      <div class="changelogChangesWrap" style="border-bottom: #454553 solid 1px;">
+                          
+                          <div class="changelogChange" editChange>
+                              <div class="changelogChangeTypeSelect">
+                                  <div class="icon-bug_icon" chlogType="bug"></div>
+                                  <div class="icon-feature_icon" chlogType="feature"></div>
+                                  <div class="icon-edit_icon" chlogType="edit"></div>
+                              </div>
+                              <div class="changelogChangeAccCan">
+                                  <div class="icon-check" do = "chAccChange" ></div>
+                                  <div class="icon-close" do = "chCanChange" ></div>
+                              </div>
+                              <textarea class="changelogChangeText">Pig filet ham beef, pig chuck bierschinken, ground bregenwurst hamburger ball leberkas, fatback steak pork pastrami short.</textarea>
+                          </div>
+                          
+                          <div class="buttonsWrap centered">
+                              <div class="button_1 sec" do="newChangelogChange">New Update</div>
+                          </div>
+                      </div>
+                      <div class="buttonsWrap centered">
+                          <div class="button_1" do="saveNewChangelogEntry">Save</div>
+                          <div class="button_1 sec" do="cancelChangelogEdit">Cancel</div>
+                      </div>
+                  </div>
+              
+                  <div class="changelogGroupWrap">
+                      <div class="icon-rightarrow changelogGroupTog"></div>
+                      <div class="changelogTitle"><b>Update v0.0.0</b><span>07 Feb 2018</span></div>
+                      <div class="changelogChangesWrap">
+                          <div class="changelogChange">
+                              <div class="icon-bug_icon changelogChangeType" chlogType="bug"></div>
+                              <div class="changelogChangeText">Pig filet ham beef, pig chuck bierschinken, ground bregenwurst hamburger ball 
+                                  leberkas, fatback steak pork pastrami short.</div>
+                          </div>
+                          <div class="changelogChange">
+                              <div class="icon-edit_icon changelogChangeType"></div>
+                              <div class="changelogChangeText">Pig filet ham beef, pig chuck bierschinken, ground bregenwurst hamburger ball 
+                                  leberkas, fatback steak pork pastrami short.</div>
+                          </div>
+                          <div class="changelogChange">
+                              <div class="icon-feature_icon changelogChangeType"></div>
+                              <div class="changelogChangeText">Pig filet ham beef, pig chuck bierschinken, ground bregenwurst hamburger ball 
+                                  leberkas, fatback steak pork pastrami short.</div>
+                          </div>
+                          <div class="changelogChange">
+                              <div class="changelogChangeText">Pig filet ham beef, pig chuck bierschinken, ground bregenwurst hamburger ball 
+                                  leberkas, fatback steak pork pastrami short.</div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="changelogGroupWrap">
+                      <div class="icon-rightarrow changelogGroupTog"></div>
+                      <div class="changelogTitle"><b>Update v0.0.0</b><span>07 Feb 2018</span></div>
+                      <div class="changelogChangesWrap">
+                          <div class="changelogChange">
+                              <div class="icon-bug_icon changelogChangeType"></div>
+                              <div class="changelogChangeText">Pig filet ham beef, pig chuck bierschinken, ground bregenwurst hamburger ball 
+                                  leberkas, fatback steak pork pastrami short.</div>
+                          </div>
+                          <div class="changelogChange">
+                              <div class="icon-edit_icon changelogChangeType"></div>
+                              <div class="changelogChangeText">Pig filet ham beef, pig chuck bierschinken, ground bregenwurst hamburger ball 
+                                  leberkas, fatback steak pork pastrami short.</div>
+                          </div>
+                          <div class="changelogChange">
+                              <div class="icon-feature_icon changelogChangeType"></div>
+                              <div class="changelogChangeText">Pig filet ham beef, pig chuck bierschinken, ground bregenwurst hamburger ball 
+                                  leberkas, fatback steak pork pastrami short.</div>
+                          </div>
+                          <div class="changelogChange">
+                              <div class="changelogChangeText">Pig filet ham beef, pig chuck bierschinken, ground bregenwurst hamburger ball 
+                                  leberkas, fatback steak pork pastrami short.</div>
+                          </div>
+                      </div>
+                  </div>
+              
+            </div>
+              
+          </div> -->
+          
       </div>
   </body>
 </html>
