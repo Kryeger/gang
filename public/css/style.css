@@ -1,5 +1,20 @@
-<<<<<<< HEAD
-body, .noselect {
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+   background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #27272E;
+    border-radius: 20px;
+}
+::-webkit-resizer{
+    background: #27272e;
+}
+body, .noselect, .checkDesc {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */ /* Konqueror HTML */
     -moz-user-select: none; /* Firefox */
@@ -15,6 +30,11 @@ body, .noselect {
     -ms-user-select: auto; /* Internet Explorer/Edge */
     user-select: auto; /* Non-prefixed version, currently
     supported by Chrome and Opera */
+}
+
+a {
+    color: #dfdfee;
+    font-weight: 600;
 }
 
 body {
@@ -300,7 +320,8 @@ body {
 }
 
 .title-desc {
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: 600;
     color: #6c6c82;
 }
 
@@ -400,6 +421,9 @@ body {
 .input_1:-moz-placeholder { /* Firefox 18- */
     color: #6c6c82;
     font-weight: 500;
+}
+.input_1[disabled]{
+    opacity: 0.5;
 }
 
 .formWarn{
@@ -508,23 +532,282 @@ body {
 .button_1:not(:last-child){
     margin-right: 10px;
 }
-.button_1:hover{
+.button_1:not(.sec):hover{
     background-color: #dfdfee;
     color: #161619;
 }
-
-=======
-
+.button_1.sec:hover{
+  background-color: rgba(108,108,130, 0.3);
+}
 .businessList {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
   flex: 1;
 }
 
 .playerList {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
   flex: 1;
 }
 
 .lists {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
 }
->>>>>>> 96d7d7f8ec001c4bf03081f5a93f39224ca8a652
+
+.changelogScreen {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+    padding: 70px 100px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.changelogGroupWrap {
+    position: relative;
+    margin: 30px 0;
+    max-width: 600px;
+    padding-left: 30px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+.changelogGroupWrap.tgld{
+    opacity: 0.5;
+}
+.changelogGroupWrap.tgld:hover{
+    opacity: 1;
+}
+.changelogGroupWrap.tgld .changelogGroupTog{
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.changelogTitle {
+    margin-bottom: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.changelogTitle span{
+    background-color: #27272E;
+    -webkit-box-shadow: 0 0 0 1px #454553;
+    box-shadow: 0 0 0 1px #454553;
+    padding: 2px 5px;
+    border-radius: 10px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 11px;
+}
+.changelogTitle b{
+    font-size: 18px;
+    font-weight: 800;
+    margin-right: 10px;
+}
+
+.changelogChange {
+    position: relative;
+    margin: 5px 0;
+    padding-left: 10px;
+}
+.changelogChange .changelogChangeType{
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    background-color: #282831;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+.changelogChange:hover .changelogChangeType.icon-bug_icon{
+    color: #f15151;
+}
+.changelogChange:hover .changelogChangeType.icon-edit_icon{
+    color: #fbc93d;
+}
+.changelogChange:hover .changelogChangeType.icon-feature_icon{
+    color: #52f666;
+}
+.changelogChange .changelogChangeText{
+    padding: 15px 25px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-size: 15px;
+    background-color: #111113;
+    -webkit-box-shadow: 0 0 0 1px #282831;
+    box-shadow: 0 0 0 1px #282831;
+}
+.changelogChange textarea.changelogChangeText{
+    font-family: 'Muli', sans-serif;
+    color: #dfdfee;
+    width: 100%;
+    resize: vertical;
+    min-height: 135px;
+    outline: none;
+    border: none;
+}
+
+.changelogChangesWrap {
+    position: relative;
+}
+.changelogChangesWrap:before{
+    content: "";
+    position: absolute;
+    left: -25px;
+    top: 10px;
+    height: calc(100% - 20px);
+    width: 0;
+    border-left: 4px dotted #27272E;
+}
+
+.changelogGroupTog {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    font-size: 13px;
+    color: #6c6c82;
+    cursor: pointer;
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+.changelogGroupTog:hover{
+    color: #dfdfee;
+}
+
+.changelogScreenTop {
+    max-width: 600px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.changelogTitleNewEntryAutoDate {
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 800;
+    margin-top: -10px;
+    color: #6c6c82;
+    padding: 5px 10px;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #27272E;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+.changelogTitleNewEntryAutoDate:hover{
+    color: #dfdfee;
+}
+.changelogTitleNewEntryAutoDate.tgld{
+    color: #dfdfee;
+    -webkit-box-shadow: 0 0 0 1px #454553;
+    box-shadow: 0 0 0 1px #454553;
+}
+
+
+
+.changelogChangeTypeSelect {
+    position: absolute;
+    top: 10px;
+    left: -5px;
+}
+.changelogChangeTypeSelect div{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 14px;
+    width: 30px;
+    height: 30px;
+    background-color: #282831;
+    margin: 5px 0;
+    border-radius: 100%;
+    cursor: pointer;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+.changelogChangeTypeSelect div:hover{
+        -webkit-box-shadow: #6c6c82 0 0 0 1px;
+        box-shadow: #6c6c82 0 0 0 1px;
+}
+.changelogChangeTypeSelect div.icon-bug_icon.tgld{
+    color: #f15151;
+    -webkit-box-shadow: #dfdfee 0 0 0 1px;
+    box-shadow: #dfdfee 0 0 0 1px;
+}
+.changelogChangeTypeSelect div.icon-edit_icon.tgld{
+    color: #fbc93d;
+    -webkit-box-shadow: #dfdfee 0 0 0 1px;
+    box-shadow: #dfdfee 0 0 0 1px;
+}
+.changelogChangeTypeSelect div.icon-feature_icon.tgld{
+    color: #52f666;
+    -webkit-box-shadow: #dfdfee 0 0 0 1px;
+    box-shadow: #dfdfee 0 0 0 1px;
+}
+
+.changelogChangeAccCan {
+    position: absolute;
+    right: -13px;
+    top: 10px;
+}
+.changelogChangeAccCan div{
+    background-color: #282831;
+    display: flex;
+    font-size: 13px;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    margin: 5px 0;
+    border-radius: 100%;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.changelogChangeAccCan div:hover{
+    box-shadow: #dfdfee 0 0 0 1px;
+}
