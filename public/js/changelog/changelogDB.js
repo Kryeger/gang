@@ -1,1 +1,1 @@
-var CHANGELOG = {"a":"b","b":[1,2,{"c":"d"}],"asd":"qwe"};
+var CHANGELOG = [{"title":"Second Entry","date":"18 Feb 2018","updates":[{"type":"bug","content":"this one's from the future"},{"type":"edit","content":"this one's from the future"},{"type":"bug","content":"this one's from the future"},{"type":"edit","content":"this one's from the future"}]},{"title":"First entry","date":"08 Feb 2018","updates":[{"type":"feature","content":"So what's new?"}]}];
