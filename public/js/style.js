@@ -87,6 +87,10 @@ class StyleFuncs{
         return this.getInput(name, type, version, otherAttr, customStyle, otherClasses);
     }
     
+    getRepassInput(name = "repassword", type = "password", version = 1, otherAttr = {placeholder : "Retype your password"}, customStyle = {}, otherClasses = []){
+        return this.getInput(name, type, version, otherAttr, customStyle, otherClasses);
+    }
+    
     getCheckbox(whatFor = "for", description, tog = 0, otherClasses = [], otherAttr = {}, customStyle = {}){
         var wrap = this.getSingleElem("div", ["checkboxWrap"]);
         if(tog) otherClasses.unshift("tgld");

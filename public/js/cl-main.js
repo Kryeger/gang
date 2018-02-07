@@ -49,6 +49,24 @@ $(function () {
           );
       });
       
+      $(document).on("click", `[do="toRegisterScreen"]`, function(){
+         $(".firstScreen").addClass("tgld"); 
+          $("body").append(`<div class="loginScreen"><div class="loginCol"></div></div>`);
+          $(".loginCol").append(
+              Style.getTitle("Register") +
+              Style.getTitleDesc("Fill in your details then hit submit!") +
+              Style.getHR()+
+              Style.getForm("register")
+          );
+          $("form[for=register]").append(
+              Style.getNameInput() +
+              Style.getPassInput() +
+              Style.getRepassInput() +
+              Style.getCheckbox("ruleAgree", "I agree to the <a href='#'>rules</a>") +
+              Style.getButtons([{ text : "Submit", do : "submitRegister" }, { text : "Cancel", do : "closeLoginScreen" }], 1)
+          );
+      });
+      
       $(document).on("click", `[do=closeLoginScreen]`, function(){
          $(".loginScreen").remove();
           $(".firstScreen").removeClass("tgld");
