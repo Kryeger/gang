@@ -1,6 +1,4 @@
 $(function(){
-    
-    var rememberMe = 0;
   
   $(document).on("click", "[do=submitLogin]", function(e){
     e.preventDefault();
@@ -9,7 +7,7 @@ $(function(){
       parent.find(".formWarn").remove();
     var username = parent.find("input[name=username]").val();
     var password = parent.find("input[name=password]").val();
-    rememberMe = $(".checkbox.tgld[for=rememberMe]").length;
+      var rememberMe = $(".checkbox.tgld[for='rememberMe']").length;
     var canDo = 1;
     if(!username.length){
       Style.popFormWarn("username", "You must enter an username");
@@ -20,17 +18,15 @@ $(function(){
       canDo = 0;
     }
     if(canDo){
-      socket.emit("login > sv", {username: username, password: password});
+      socket.emit("login > sv", {username: username, password: password, rememberMe: rememberMe});
     }
   });
   
   socket.on("login > cl", function(data){
-      console.log(1);
     if(data.error){
-      //TODO: handle errors
-      console.log(data.error);
+      Style.popFormWarn(data.errorAt, data.error);
     }else{
-        if(rememberMe){
+        if(data.rememberMe){
             $.cookie('userid', data.id, { expires: 30, path: '/' });
             $.cookie('userkey', data.userkey, { expires: 30, path: '/' });
         }else{

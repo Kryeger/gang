@@ -91,6 +91,7 @@ class StyleFuncs{
         var wrap = this.getSingleElem("div", ["checkboxWrap"]);
         if(tog) otherClasses.unshift("tgld");
         otherClasses.unshift("checkbox");
+        otherAttr.for = whatFor;
         var cb = this.getSingleElem("div", otherClasses, otherAttr, customStyle);
         cb += `</div>`;
         wrap += cb;

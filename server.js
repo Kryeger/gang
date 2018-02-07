@@ -171,14 +171,14 @@ io.on('connection', function(socket){
     con.query("SELECT * FROM users WHERE username = "+ data.username, function(err, result){
       if(err) throw err;
       if(!result.length){
-        io.to(socketid).emit("login > cl", {error: "User not found"});
+          io.to(socketid).emit("login > cl", {errorAt: "username", error: "User not found"});
         return 0;
       }
       data.password = encrypt(data.password + result[0].hash);
       if(data.password != result[0].password){
-        io.to(socketid).emit("login > cl", {error: "Incorrect Password"});
+        io.to(socketid).emit("login > cl", {errorAt: "password", error: "Incorrect Password"});
       } else {
-        io.to(socketid).emit("login > cl", {id: result[0].id, userkey: result[0].userkey, error: 0});
+        io.to(socketid).emit("login > cl", {id: result[0].id, userkey: result[0].userkey, rememberMe: data.rememberMe, error: 0});
       }
       
     });
