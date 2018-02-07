@@ -4,6 +4,7 @@
   <head>
     <title>GANG*</title>
     <meta name="viewport" content="width=device-width">
+    <link href="https://fonts.googleapis.com/css?family=Muli:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
@@ -12,6 +13,7 @@
     <script src="/js/lib/underscore-min.js"></script>
     <script src="/js/lib/jquery-ui.min.js"></script>
     <script src="/js/lib/chance.min.js"></script>
+    <script src="/js/style.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/cl-main.js"></script>
     <script src="/js/cl-register.js"></script>
@@ -20,7 +22,8 @@
     <script src="/js/cl-faction.js"></script>
   </head>
   <body>
-    
+      <div class="gameVersion select">v0.0.0</div>
+<!--
   <div>
     <input for="companyName" type="text">
     <input for="capital" type="number">
@@ -28,6 +31,74 @@
   </div>
     
   <ul for="companyList"></ul>
-    
+-->
+      <div class="gameWindow">
+          <div class="firstScreen">
+              <div class="firstScreenLogo"> 
+                  
+                  <svg version="1.1"
+                       xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+                       x="0px" y="0px" viewBox="0 0 310.4 316.8" style="enable-background:new 0 0 310.4 316.8;"
+                       xml:space="preserve">
+                      <style type="text/css">
+                          .st0{fill:none;stroke:#2E2E3F;stroke-width:17;stroke-miterlimit:10;}
+                          .st1{fill:url(#SVGID_1_);}
+                          .st2{fill:url(#SVGID_2_);}
+                      </style>
+                      <defs>
+                      </defs>
+                      <g>
+                          <path class="st0" d="M282.3,32.1l3.6,6.6L213,92.6c14.3,0,28.8,3.6,43.7,10.8c14.9,7.2,26.1,17.2,33.7,29.9
+                                               c7.6,12.8,11.4,26.1,11.4,40.1c0,22.2-7.7,43.6-23,64.2c-15.4,20.6-37.3,37.5-65.7,50.8c-28.4,13.3-55.2,20-80.3,20
+                                               c-24.1,0-46.1-5.4-66-16.2c-19.9-10.8-34.6-24.3-44.1-40.5C13.3,235.4,8.5,217.5,8.5,198c0-22,5.3-42.4,16-61.3
+                                               C35.1,117.8,54.9,96.9,83.8,74L164.5,10c22.5,10.9,40,18.2,52.6,21.8c12.6,3.6,25.1,5.4,37.3,5.4C263.6,37.1,272.9,35.5,282.3,32.1
+                                               z M88.9,81.2c-15.3,15.7-26,30.5-32.2,44.3c-6.2,13.8-9.3,29.9-9.3,48.3c0,14.8,2,27.8,6.1,39.1c4.1,11.3,10.1,22.2,18.1,32.7
+                                               c7.6-6.9,12.4-12.8,14.4-17.6s3-13.7,3-26.7V81.2z M156.8,138.2c-10.6,5.1-19.4,10.3-26.3,15.5v33.5c0,10.3-0.7,17.1-2.2,20.7
+                                               c-1.5,3.5-4.6,7.2-9.4,11.1c-2.9,2.3-5.3,4.1-7.2,5.6l-34.3,28.8c12,12.6,24.1,22,36.5,28c12.4,6,26.7,9.5,42.9,10.5V138.2z
+                                               M133.8,44.5l-3.4,3.4v94.4L223.8,72C194.7,64.7,164.7,55.5,133.8,44.5z M165.6,182.2c9.3,6.4,17.8,10.9,25.5,13.6
+                                               c7.7,2.7,16.2,4,25.5,4c8.5,0,16.4-1.1,23.5-3.2c7.2-2.1,16.3-6.3,27.3-12.6c-3.3-13.9-9.4-25.2-18.4-33.9
+                                               c-14.5-14.1-32.6-21.1-54.3-21.1c-9.2,0-19,1.8-29.3,5.4V182.2z M165.6,237.7c16.6-8.9,32.4-13.4,47.3-13.4
+                                               c14.4,0,29.6,4.1,45.7,12.2c6.8-14.1,10.2-27.5,10.2-40.3v-2.6c-12,6.1-21.6,10.1-28.9,12.1c-7.3,2-15.3,3-23.9,3
+                                               c-8.3,0-16.6-1.3-24.9-3.8c-8.4-2.6-16.8-6.3-25.3-11.3V237.7z M165.6,291.6c12.4-0.7,22.5-2.4,30.3-5.2c12-4.1,23.3-10.1,33.9-18
+                                               c8-5.9,16.1-14,24.3-24.3c-16.1-6.7-30.3-10-42.7-10c-15,0-30.3,4.4-45.9,13.2V291.6z"/>
+                      </g>
+                      <g>
+                          <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="155.1797" y1="195.8812" x2="155.1797" y2="578.3738">
+                              <stop  offset="0" style="stop-color:#DFDFEE"/>
+                              <stop  offset="1" style="stop-color:#161619"/>
+                          </linearGradient>
+                          <path class="st1" d="M282.3,32.1l3.6,6.6L213,92.6c14.3,0,28.8,3.6,43.7,10.8c14.9,7.2,26.1,17.2,33.7,29.9
+                                               c7.6,12.8,11.4,26.1,11.4,40.1c0,22.2-7.7,43.6-23,64.2c-15.4,20.6-37.3,37.5-65.7,50.8c-28.4,13.3-55.2,20-80.3,20
+                                               c-24.1,0-46.1-5.4-66-16.2c-19.9-10.8-34.6-24.3-44.1-40.5C13.3,235.4,8.5,217.5,8.5,198c0-22,5.3-42.4,16-61.3
+                                               C35.1,117.8,54.9,96.9,83.8,74L164.5,10c22.5,10.9,40,18.2,52.6,21.8c12.6,3.6,25.1,5.4,37.3,5.4C263.6,37.1,272.9,35.5,282.3,32.1
+                                               z M88.9,81.2c-15.3,15.7-26,30.5-32.2,44.3c-6.2,13.8-9.3,29.9-9.3,48.3c0,14.8,2,27.8,6.1,39.1c4.1,11.3,10.1,22.2,18.1,32.7
+                                               c7.6-6.9,12.4-12.8,14.4-17.6s3-13.7,3-26.7V81.2z M156.8,138.2c-10.6,5.1-19.4,10.3-26.3,15.5v33.5c0,10.3-0.7,17.1-2.2,20.7
+                                               c-1.5,3.5-4.6,7.2-9.4,11.1c-2.9,2.3-5.3,4.1-7.2,5.6l-34.3,28.8c12,12.6,24.1,22,36.5,28c12.4,6,26.7,9.5,42.9,10.5V138.2z
+                                               M133.8,44.5l-3.4,3.4v94.4L223.8,72C194.7,64.7,164.7,55.5,133.8,44.5z M165.6,182.2c9.3,6.4,17.8,10.9,25.5,13.6
+                                               c7.7,2.7,16.2,4,25.5,4c8.5,0,16.4-1.1,23.5-3.2c7.2-2.1,16.3-6.3,27.3-12.6c-3.3-13.9-9.4-25.2-18.4-33.9
+                                               c-14.5-14.1-32.6-21.1-54.3-21.1c-9.2,0-19,1.8-29.3,5.4V182.2z M165.6,237.7c16.6-8.9,32.4-13.4,47.3-13.4
+                                               c14.4,0,29.6,4.1,45.7,12.2c6.8-14.1,10.2-27.5,10.2-40.3v-2.6c-12,6.1-21.6,10.1-28.9,12.1c-7.3,2-15.3,3-23.9,3
+                                               c-8.3,0-16.6-1.3-24.9-3.8c-8.4-2.6-16.8-6.3-25.3-11.3V237.7z M165.6,291.6c12.4-0.7,22.5-2.4,30.3-5.2c12-4.1,23.3-10.1,33.9-18
+                                               c8-5.9,16.1-14,24.3-24.3c-16.1-6.7-30.3-10-42.7-10c-15,0-30.3,4.4-45.9,13.2V291.6z"/>
+                      </g>
+                  </svg>
+
+              </div>
+              <div class="firstScreenPermLight"></div>
+              <div class="firstScreenBacklight"></div>
+              <div class="firstScreenMenu">
+                    <div class="fsm-mapoverlay"></div>
+                    <div class="fsm-bottommenu">
+                        <div class="fsm-bm-left">
+                            <div class="fsm-bm-item" style="color: #DFDFEE;" data-shadow="Login" do="toLoginScreen">Login</div>
+                            <div class="fsm-bm-item" data-shadow="Register">Register</div>
+                        </div>
+                        <div class="fsm-bm-right">
+                            <div class="fsm-bm-item" data-shadow="Changelog">Changelog</div>
+                        </div>
+                    </div>
+              </div>
+        </div>
+      </div>
   </body>
 </html>

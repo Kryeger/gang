@@ -1,4 +1,3 @@
-// TBA
 const List = require("./List.js");
 
 module.exports = class Factionlist extends List{
@@ -7,7 +6,7 @@ module.exports = class Factionlist extends List{
   }
     
     insert(faction){
-        faction.setId(this.lastid);
+        faction.id = this.lastid;
         this.lastid++;
         this.push(faction);
   }

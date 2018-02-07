@@ -32,13 +32,7 @@ module.exports = class Faction{
             }
         }
         if(depId < -1 || depId >= this.depts.length) return 0;
-        return this.depts[depId].removeFromDept(memId);
-    }
-    
-    // setters
-    
-    setId(newid){
-        this.id = newid;
+        return this.depts[depId].removeFromDept(memId); 
     }
     
     // getters

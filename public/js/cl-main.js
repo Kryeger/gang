@@ -5,14 +5,7 @@ $(function () {
   $(document).ready(function(){
     
     //CHECK IF LOGGED IN
-    if(typeof $.cookie('userid') === 'undefined' || typeof $.cookie('userkey') === 'undefined'){
-      $("body").prepend(`
-<div for="isGuest">
-  <div do="toLogin">Login</div>
-  <div do="toRegister">Register</div>
-</div>
-`);
-    }else{
+    if(typeof $.cookie('userid') !== 'undefined' && typeof $.cookie('userkey') !== 'undefined'){
       socket.emit("checkAccExists > sv", {userid: $.cookie('userid'), userkey: $.cookie('userkey')});
     }
     
@@ -22,9 +15,7 @@ $(function () {
        $.removeCookie('userkey', {path : '/'});
        location.reload();
      } else{ // >> USER IS LOGGED
-       $("body").prepend(`
-<div do="logout">Logout</div>
-`);
+       $(".gameWindow").empty().prepend(Style.getButtons([{text : "Logout", do : "logout"}]));
        
      } // << USER IS LOGGED
     }); 
@@ -40,6 +31,34 @@ $(function () {
       $("body").prepend(`<div for="loginWrap"></div>`);
       $("[for=loginWrap]").load("../html/login.html");
     });
+      
+      $(document).on("click", `[do="toLoginScreen"]`, function(){
+         $(".firstScreen").addClass("tgld"); 
+          $("body").append(`<div class="loginScreen"><div class="loginCol"></div></div>`);
+          $(".loginCol").append(
+              Style.getTitle("Login") +
+              Style.getTitleDesc("Fill in your details then hit submit!") +
+              Style.getHR()+
+              Style.getForm("login")
+          );
+          $("form[for=login]").append(
+              Style.getNameInput() +
+              Style.getPassInput() +
+              Style.getCheckbox("rememberMe", "Remember me", 1) +
+              Style.getButtons([{ text : "Submit", do : "submitLogin" }, { text : "Cancel", do : "closeLoginScreen" }], 1)
+          );
+      });
+      
+      $(document).on("click", `[do=closeLoginScreen]`, function(){
+         $(".loginScreen").remove();
+          $(".firstScreen").removeClass("tgld");
+      });
+
+      // STYLE
+
+      $(document).on("mousemove", function(e){
+          $(".firstScreenBacklight").css({top: e.pageY, left: e.pageX});
+      });
     
   });
 });
