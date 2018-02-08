@@ -14,6 +14,11 @@
 ::-webkit-resizer{
     background: #27272e;
 }
+
+*[hidden]{
+    display: none;
+}
+
 body, .noselect, .checkDesc {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */ /* Konqueror HTML */
@@ -259,6 +264,9 @@ body {
     width: 100%;
     height: 100%;
     position: relative;
+}
+.firstScreen.tgld{
+    pointer-events: none;
 }
 .firstScreen.tgld .fsm-bottommenu{
     -webkit-transform-origin: bottom center;
@@ -562,9 +570,10 @@ body {
 }
 
 .changelogScreen {
+    position: absolute;
     width: 100%;
     height: 100%;
-    position: relative;
+    top: 0; left: 0;
     z-index: 2;
     padding: 70px 100px;
     -webkit-box-sizing: border-box;
@@ -611,6 +620,12 @@ body {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     font-size: 11px;
+    font-weight: 700;
+    transition: all 0.2s;
+}
+.changelogTitle span:hover{
+    background-color: #dfdfee;
+    color: #111113;
 }
 .changelogTitle b{
     font-size: 18px;
@@ -797,17 +812,180 @@ body {
 }
 .changelogChangeAccCan div{
     background-color: #282831;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     font-size: 13px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     width: 30px;
     height: 30px;
     margin: 5px 0;
     border-radius: 100%;
+    -webkit-transition: all 0.2s;
     transition: all 0.2s;
     cursor: pointer;
 }
 .changelogChangeAccCan div:hover{
-    box-shadow: #dfdfee 0 0 0 1px;
+    background-color: #dfdfee;
+    color: #111113;
+}
+
+.changelogGroupSettings {
+    position: absolute;
+    right: 0;
+    color: #6c6c82;
+    font-size: 14px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 30px;
+    opacity: 0;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+.changelogGroupSettings:hover {
+    color: #dfdfee;
+    background-color: rgba(108,108,130, 0.2);
+}
+.changelogGroupWrap:hover .changelogGroupSettings{
+    opacity: 1;
+}
+
+.contextMenu {
+    position: fixed;
+    z-index: 888;
+}
+.contextMenu.version_1{
+    width: 170px;
+    background-color: #dfdfee;
+    color: #111113;
+    padding: 5px 0;
+    -webkit-box-shadow: 0 8px 10px rgba(0,0,0, 0.4);
+    box-shadow: 0 8px 10px rgba(0,0,0, 0.4);
+    overflow: auto;
+    border-radius: 2px;
+    max-height: 55vh;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.contextMenu.version_1 .contextMenuItem{
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px 20px;
+    cursor: pointer;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+}
+.contextMenu.version_1 .contextMenuItem:hover{
+    background-color: rgba(17,17,19, 0.05);
+}
+.contextMenu.version_1::-webkit-scrollbar-thumb {
+    background-color: #B6B6CB;
+}
+
+.warnsWrap {
+    position: fixed;
+    z-index: 889;
+    pointer-events: none;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    top: 0;
+    right: 0;
+    width: 320px;
+    max-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.warnsWrap .warnItem{
+    pointer-events: auto;
+}
+
+.warnItem.version_1 {
+    position: relative;
+    background-color: #0F0F10;
+    -webkit-box-shadow: #27272e 0 0 0 1px;
+    box-shadow: #27272e 0 0 0 1px;
+    padding: 15px;
+    padding-right: 25px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #6c6c82;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+.warnItem.version_1:not(:last-child){
+    margin-bottom: 10px;
+}
+.warnItem.version_1:hover{
+    color: #dfdfee;
+    -webkit-box-shadow: #27272e 0 0 0 1px, 0 5px 20px rgba(0,0,0, 0.3), inset 0 -120px 90px -90px rgba(39,39,46, 0.5);
+    box-shadow: #27272e 0 0 0 1px, 0 5px 20px rgba(0,0,0, 0.3), inset 0 -120px 90px -90px rgba(39,39,46, 0.5);
+}
+.warnItem.version_1:hover .icon-close{
+    color: #6c6c82;
+}
+.warnItem.version_1 .icon-close{
+    position: absolute;
+    top: 15px; right: 10px;
+    font-size: 12px;
+    color: #27272e;
+    cursor: pointer;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+}
+.warnItem.version_1 .icon-close:hover{
+    color: #dfdfee;
+}
+
+.changelogChangeSettings {
+    position: absolute;
+    top: 8px;
+    right: 0;
+    -webkit-transform: translateX(50%);
+    transform: translateX(50%);
+    width: 30px;
+    height: 30px;
+    background-color: #282831;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    opacity: 0;
+    cursor: pointer;
+    font-size: 13px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+.changelogChangeSettings:hover{
+    background-color: #dfdfee;
+    color: #111113;
+}
+.changelogChange:hover .changelogChangeSettings{
+    opacity: 1;
 }

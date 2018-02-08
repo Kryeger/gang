@@ -14,8 +14,8 @@
     <script src="/js/lib/underscore-min.js"></script>
     <script src="/js/lib/jquery-ui.min.js"></script>
     <script src="/js/lib/chance.min.js"></script>
-    <script src="/js/style.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
+      <script src="/socket.io/socket.io.js"></script>
+      <script src="/js/style.js"></script>
     <script src="/js/cl-main.js"></script>
     <script src="/js/cl-register.js"></script>
     <script src="/js/cl-login.js"></script>
@@ -25,7 +25,7 @@
     <script src="/js/changelog/changelog.js"></script>
   </head>
   <body>
-      <div class="gameVersion select">v0.0.0</div>
+      <div class="gameVersion">v0.0.0</div>
 <!--
   <div>
     <input for="companyName" type="text">
@@ -152,10 +152,15 @@
 
                   <div class="changelogGroupWrap">
                       <div class="icon-rightarrow changelogGroupTog"></div>
-                      <div class="changelogTitle"><b>Update v0.0.0</b><span>07 Feb 2018</span></div>
+                      <div class="changelogTitle">
+                          <b>Update v0.0.0</b>
+                          <span>07 Feb 2018</span>
+                          <div class="icon-dotmenu changelogGroupSettings" do="groupSettingsCM"></div>
+                      </div>
                       <div class="changelogChangesWrap">
                           <div class="changelogChange">
                               <div class="icon-bug_icon changelogChangeType"></div>
+                              <div class="icon-dotmenu changelogChangeSettings"></div>
                               <div class="changelogChangeText">Pig filet ham beef, pig chuck bierschinken, ground bregenwurst hamburger ball 
                                   leberkas, fatback steak pork pastrami short.</div>
                           </div>
@@ -179,7 +184,7 @@
             </div>
               
           </div>
-          -->
+          <!- -->
       </div>
   </body>
 </html>
