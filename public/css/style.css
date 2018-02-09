@@ -517,6 +517,9 @@ body {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
+.buttonsWrap:last-child{
+    margin-bottom: 0;
+}
 
 .buttonsWrap.centered{
     -webkit-box-pack: center;
@@ -621,6 +624,7 @@ body {
     box-sizing: border-box;
     font-size: 11px;
     font-weight: 700;
+    -webkit-transition: all 0.2s;
     transition: all 0.2s;
 }
 .changelogTitle span:hover{
@@ -988,4 +992,83 @@ body {
 }
 .changelogChange:hover .changelogChangeSettings{
     opacity: 1;
+}
+
+.alertWrapper.version_1 {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    overflow: auto;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    z-index: 900;
+}
+.alertWrapper.version_1.wOverlay{
+    background-color: rgba(15,15,16, 0.8);
+}
+
+.alertWrapper.version_1 .alertBox {
+    padding: 20px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #27272e;
+    width: 350px;
+    max-height: calc(100vh - 50px);
+    overflow: auto;
+    border-radius: 3px;
+    -webkit-box-shadow: #111113 0 0 0 1px, 0 5px 20px rgba(0,0,0,0.3);
+    box-shadow: #111113 0 0 0 1px, 0 5px 20px rgba(0,0,0,0.3);
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+.animation-pop_in{
+    animation-name: pop_in;
+    animation-duration: .5s;
+}
+@keyframes pop_in{
+    0%{
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.alertWrapper.version_1 .alertBox:hover{
+    -webkit-box-shadow: #111113 0 0 0 1px, 0 2px 25px rgba(0,0,0,0.5), inset 0 100px 90px -90px rgba(250,250,250,0.05);
+    box-shadow: #111113 0 0 0 1px, 0 2px 25px rgba(0,0,0,0.5), inset 0 100px 90px -90px rgba(250,250,250,0.05);
+}
+
+.alertWrapper.version_1 .alertBox_text {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.animation-shake {
+    animation-name: shake;
+    animation-duration: 1s;
+}
+.infinite-animation{
+    animation-iteration-count: infinite;
+}
+@keyframes shake{
+    0%, 20%, 40%, 60%, 80%{
+        transform: translateX(-10px);
+    }
+    10%, 30%, 50%, 70%, 90%{
+        transform: translateX(10px);
+    }
 }

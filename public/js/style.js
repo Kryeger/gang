@@ -145,7 +145,6 @@ class StyleFuncs{
         wrap += `</div>`;
         $("body").prepend(wrap);
         var cM = $(".contextMenu:first");
-        console.log(cM);
         if( position.x + cM.outerWidth() > $(window).outerWidth() ) position.x = $(window).outerWidth() - cM.outerWidth();
         if( position.y + cM.outerHeight() > $(window).outerHeight() ) position.y = $(window).outerHeight() - cM.outerHeight();
         cM.css({top: position.y + "px", left: position.x + "px"});
@@ -166,6 +165,29 @@ class StyleFuncs{
             }, expire)
         }
     }
+    
+    popAlert(text = "text", extraElements = [], canBeClosed = 1, expires = 0, overlay = 0, version = 1, otherClasses = [], otherAttr = {}, customStyle = {}){
+        $(".alertWrapper").remove();
+        otherClasses.unshift("alertWrapper version_" + version + ((overlay)?" wOverlay":""));
+        if(canBeClosed) otherAttr.canClose = 1;
+        var aW = this.getSingleElem("div", otherClasses, otherAttr, customStyle);
+        aW += this.getSingleElem("div", ["alertBox animation-pop_in"]);
+        aW += this.getBasicElem("div", text, ["alertBox_text"]);
+        for(var i = 0; i < extraElements.length; ++i){
+            aW += extraElements[i];
+        }
+        aW += `</div></div>`;
+        $("body").prepend(aW);
+        var remAnimTO = setTimeout(function (){
+           $(".alertBox").removeClass("animation-pop_in"); 
+        }, 500);
+        if(expires){
+            setTimeout(function (){
+                clearTimeout(remAnimTO);
+               $(".alertWrapper").remove(); 
+            }, expires);
+        }
+    }
 
 }
 
@@ -183,9 +205,32 @@ $(function () {
             if( $(".contextMenu").length && !$(e.target).closest(".contextMenu").length ){
                 e.stopImmediatePropagation();
                 e.preventDefault();
-                $("[contextMenuSelected]").removevAttr("contextMenuSelected");
+                $("[contextMenuSelected]").removeAttr("contextMenuSelected");
                 $(".contextMenu")[0].remove();
             }
+            
+            if( $(".alertWrapper").length && !$(e.target).closest(".alertBox").length ){
+                e.stopImmediatePropagation();
+                e.preventDefault();
+                var canClose = $(".alertWrapper[canClose]").length;
+                if(canClose){
+                    $(".alertWrapper").remove();
+                }else{
+                    $(".alertBox").removeClass("animation-pop_in"); 
+                    $(".alertBox").addClass("animation-shake");
+                    setTimeout(function (){
+                       $(".alertBox").removeClass("animation-shake"); 
+                    }, 300);
+                }
+            }
+        });
+        
+        $(document).on("click", "[closeAlert]", function(){
+           $(".alertWrapper").remove(); 
+        });
+        
+        $(document).on("click", "[closeContextMenu]", function(){
+           $(this).parents(".contextMenu").remove(); 
         });
         
         $(document).on("click", `[do="closeWarnItem"]`, function(){

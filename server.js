@@ -210,7 +210,7 @@ io.on('connection', function(socket){
     socket.on("changelog > sv", function(data){ //SAVE
         fs.writeFile("./public/js/changelog/changelogDB.js", data.content, (err) => {
             if (err) throw err;
-            console.log('Changelog updated!');
+            io.emit("changelog update > cl", {success: 1, changelog: data.changelog});
         });
     });
 });

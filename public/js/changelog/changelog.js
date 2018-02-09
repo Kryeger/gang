@@ -72,7 +72,7 @@ $(function () {
         var s = "var CHANGELOG = " + JSON.stringify(CHANGELOG) + ";";
 
         socket.emit("changelog > sv", {
-            content: s
+            content: s, changelog: CHANGELOG
         });
     }
 
@@ -134,7 +134,6 @@ $(function () {
                 Style.popWarn("You are already editing an Entry!");
                 return;
             }
-            $(this).parents(".contextMenu").remove();
            var entryId = $(this).attr("entryId");
             $(".changelogGroupWrap[chentryid="+entryId+"]").attr("hidden", 1);
             $(".changelogGroupWrap[chentryid="+entryId+"]").before(`
@@ -164,7 +163,6 @@ $(function () {
         $(document).on("click", `[do=changelogEditChange]`, function(){
             if (!($(".changelogGroupWrap[editEntry]").length)) return;
             if(!changelogAcceptChange()) return;
-            $(this).parents(".contextMenu").remove();
             var change = $(".changelogChange[contextMenuSelected]");
             change.removeAttr("contextMenuSelected");
             var content = change.find(".changelogChangeText").html();
@@ -216,9 +214,7 @@ $(function () {
 
         $(document).on("click", `[do = "chCanChange"]`, function () {
             $(`.changelogChange[editChange]`).remove();
-            $(`.changelogChange[hidden]`).removeAttr("hidden").animate({
-                height: 'toggle'
-            }, 300);
+            $(`.changelogChange[hidden]`).removeAttr("hidden");
         });
 
         $(document).on("click", `[do = "chAccChange"]`, function () {
@@ -314,12 +310,49 @@ $(function () {
         
         $(document).on("click", `[do="groupSettingsCM"]`, function(e){
             var entryId = $(this).parents(".changelogGroupWrap").attr("chentryid");
-            Style.popContextMenu([{text: "Edit Entry", do: "changelogEditEntry", otherAttr: {entryId: entryId}}, {text: "Delete Entry", do: "changelogDeleteEntry", otherAttr: {entryId: entryId}}], {x : e.pageX, y: e.pageY});
+            Style.popContextMenu([{text: "Edit Entry", do: "changelogEditEntry", otherAttr: {entryId: entryId, closeContextMenu: 1}}, {text: "Delete Entry", do: "changelogDeleteEntryPop", otherAttr: {entryId: entryId, closeContextMenu: 1}}], {x : e.pageX, y: e.pageY});
         });
         
         $(document).on("click", `[do="changelogChSetCM"]`, function(e){
             $(this).parents(".changelogChange").attr("contextMenuSelected", 1);
-            Style.popContextMenu([{text: "Edit Change", do: "changelogEditChange"}, {text: "Delete Change", do: "changelogDeleteChange"}], {x : e.pageX, y: e.pageY});
+            Style.popContextMenu([{text: "Edit Change", do: "changelogEditChange", closeContextMenu: 1}, {text: "Delete Change", do: "changelogDeleteChangePop", otherAttr: {closeContextMenu: 1} }], {x : e.pageX, y: e.pageY});
+        });
+        
+        $(document).on("click", "[do=changelogDeleteChangePop]", function(){
+           Style.popAlert("Are you sure you want to delete this Update? This action is irreversible!",
+                          Style.getButtons([{text: "Delete", do: "changelogDeleteChange", primary: 1, otherAttr: {closeAlert: 1}}, {text: "Cancel", otherAttr: {closeAlert: 1}}], 1),
+                          0, 0, 1
+                         );
+        });
+        
+        $(document).on("click", "[do=changelogDeleteEntryPop]", function(){
+            var entryId = $(this).attr("entryId");
+           Style.popAlert("Are you sure you want to delete this Entry? This action is irreversible!",
+                          Style.getButtons([{text: "Delete", do: "changelogDeleteEntry", primary: 1, otherAttr: {closeAlert: 1, entryId: entryId}}, {text: "Cancel", otherAttr: {closeAlert: 1}}], 1),
+                          0, 0, 1
+                         );
+        });
+        
+        $(document).on("click", "[do=changelogDeleteChange]", function(){
+            $(".changelogChange[contextmenuselected]").remove();
+        });
+        
+        $(document).on("click", "[do=changelogDeleteEntry]", function(){
+           var entryId = $(this).attr("entryId");
+            CHANGELOG.splice(entryId, 1);
+            updateChangelogDB();
+            updateChangelogScreen();
+        });
+        
+        socket.on("changelog update > cl", function(data){
+           if(!data.success) return;
+            
+            if ($(".changelogGroupWrap[editEntry]").length){
+                Style.popWarn("Since when you started editing this Entry the Changelog has been updated! Committing your changes now may interfere with the changes made by the other person! You should reload the page.");
+            }else{
+                CHANGELOG = data.changelog;
+                updateChangelogScreen();
+            }
         });
 
     });
