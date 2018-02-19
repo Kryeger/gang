@@ -90,6 +90,15 @@ class StyleFuncs{
     getRepassInput(name = "repassword", type = "password", version = 1, otherAttr = {placeholder : "Retype your password"}, customStyle = {}, otherClasses = []){
         return this.getInput(name, type, version, otherAttr, customStyle, otherClasses);
     }
+  
+    getSearchInput(name = "searchBox", type = "search", version = 1, otherAttr = {placeholder : "Search..."}, customStyle = {}, otherClasses = []){
+      otherClasses.unshift("inputWrap_" + version);
+      var p = this.getSingleElem("div", otherClasses, otherAttr, customStyle);
+      p += this.getBasicElem("label", "", ["inputSearch_" + version + " icon-rightarrow"]);
+      p += this.getInput(name, type, version);
+      p += `</p>`
+      return p;
+    }
 
     getCheckbox(whatFor = "for", description, tog = 0, otherClasses = [], otherAttr = {}, customStyle = {}){
         var wrap = this.getSingleElem("div", ["checkboxWrap"]);
