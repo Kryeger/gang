@@ -87,15 +87,6 @@ con.connect(function(err){
 
 //CLASSES
 
-class Log{
-  constructor(text){
-    this.text = text;
-  }
-  print(){
-    console.log(" -<Log>- \n" + this.text);
-  }
-}
-
 //VARS
 
 var S = new World();
