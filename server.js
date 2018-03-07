@@ -145,7 +145,7 @@ io.on('connection', function(socket){
     con.query("SELECT * FROM users WHERE id = " + data.userid + " AND userkey = " + data.userkey, function (err, result){
       if(err) throw err;
       if(result.length){
-        io.to(socketid).emit("checkAccExists > cl", {error: 0});
+        io.to(socketid).emit("checkAccExists > cl", {error: 0, username: result[0].username});
         //logged in
         //users[result[0].id] = new User(result[0].id, result[0].username, socketid, 0);//TODO: handle player ids
         S.insertSocket(result[0], socketid);

@@ -15,12 +15,25 @@ $(function () {
     socket.on("checkAccExists > cl", function(data){
      if(data.error){
        $.removeCookie('userid', {path : '/'});
-       $.removeCookie('userkey', {path : '/'});
+         $.removeCookie('userkey', {path : '/'});
        location.reload();
      } else{ // >> USER IS LOGGED
-       $(".gameWindow").empty().prepend(Style.getButtons([{text : "Logout", do : "logout"}]));
+       $(".gameWindow").empty();
        logged = 1;
       $(".gameWindow").prepend(`
+<div class="bigmapplaceholder"></div>
+<div class="topbarWrap">
+<div class="topbarlogoWrap">
+</div>
+
+<div class="topbarRight">
+<div class="topbarUserpanel">
+<div class="tbup-username">`+ data.username +`</div>
+<div class="tbup-profilepic"></div>
+<div class="tbup-menuTog" do="toggleUserpanelSettings"><i class="icon-dotmenu"></i></div>
+</div>
+</div>
+</div>
 <div class="sideMenuWrap">
           <div class="sideMenuItem icon-bug_icon" itemName="Businesses" do="openMenu" menuItem="business"></div>
           <div class="sideMenuItem icon-edit_icon" itemName="Lorem"></div>
@@ -133,6 +146,7 @@ $(function () {
         $(".menuWindowWrap").remove();
       }
     });
+<<<<<<< HEAD
     
       //ACTIONS
     
@@ -142,6 +156,22 @@ $(function () {
           capital: 100,
           type: "taxi"
         }]);
+=======
+      
+      $(document).on("click", `[do=toggleUserpanelSettings]`, function(e){
+          $(".tb-userpanelMenuWrap").remove();
+          let top = $(".topbarWrap").offset().top + $(".topbarWrap").outerHeight();
+          let right = $(window).outerWidth() - ($(".topbarWrap").offset().left + $(".topbarWrap").outerWidth());
+         $("body").prepend(`
+<div class="tb-userpanelMenuWrap" style="top: `+ top +`px; right: `+ right +`px;">
+<div class="tb-userpanelMenuItem">Settings</div>
+<hr>
+<div class="tb-userpanelMenuItem" do="toChangelogScreen">Changelog</div>
+<hr>
+<div class="tb-userpanelMenuItem" do="logout">Logout</div>
+</div>
+`);
+>>>>>>> a55cc0e6e4da4bb16085267d5f9921488c016bbb
       });
 
       // STYLE

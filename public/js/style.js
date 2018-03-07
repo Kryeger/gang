@@ -218,6 +218,11 @@ $(function () {
                 $(".contextMenu")[0].remove();
             }
             
+            if($(".tb-userpanelMenuWrap").length){
+                e.preventDefault();
+                $(".tb-userpanelMenuWrap").remove();
+            }
+            
             if( $(".alertWrapper").length && !$(e.target).closest(".alertBox").length ){
                 e.stopImmediatePropagation();
                 e.preventDefault();
