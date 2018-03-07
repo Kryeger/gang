@@ -146,7 +146,6 @@ $(function () {
         $(".menuWindowWrap").remove();
       }
     });
-<<<<<<< HEAD
     
       //ACTIONS
     
@@ -156,7 +155,6 @@ $(function () {
           capital: 100,
           type: "taxi"
         }]);
-=======
       
       $(document).on("click", `[do=toggleUserpanelSettings]`, function(e){
           $(".tb-userpanelMenuWrap").remove();
@@ -171,7 +169,6 @@ $(function () {
 <div class="tb-userpanelMenuItem" do="logout">Logout</div>
 </div>
 `);
->>>>>>> a55cc0e6e4da4bb16085267d5f9921488c016bbb
       });
 
       // STYLE
