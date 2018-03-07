@@ -35,9 +35,9 @@ const Business = require("./private/js/Business.js");
 
 log.setLevel('warn');
 
-process.on('uncaughtException', function (err) {
-  log.warn("UncaughtException:" + err);
-});
+//process.on('uncaughtException', function (err) {
+//  log.warn("UncaughtException:" + err);
+//});
 
 //CRYPTO
 
@@ -89,13 +89,13 @@ con.connect(function(err){
 
 //VARS
 
-var S = new World();
-var U = new Util();
+S = new World();
+U = new Util();
 
 //FUNC
 
 setInterval(function(){
-  console.log(S.users);
+  console.log(S);
 }, 5000);
 
 //MAIN
@@ -148,7 +148,7 @@ io.on('connection', function(socket){
         io.to(socketid).emit("checkAccExists > cl", {error: 0});
         //logged in
         //users[result[0].id] = new User(result[0].id, result[0].username, socketid, 0);//TODO: handle player ids
-        S.users.insert(result[0], socketid);
+        S.insertSocket(result[0], socketid);
       } else {
         io.to(socketid).emit("checkAccExists > cl", {error: "Error"});
       }
@@ -178,23 +178,23 @@ io.on('connection', function(socket){
   //LOGOUT
   
   socket.on("disconnect", function(){
-    S.users.removeSocket(socket.id);
+    S.removeSocket(socket.id);
   });
   
   socket.on("logout > sv", function(userid){
-    S.users.removeUser(userid);
+    S.removeUser(userid);
   });
   
   socket.on("create company > sv", function(arr){
-    var user = U.validate(arr[0].id, arr[0].key);
-    if(user){
-      S.companies.push(new Company(arr[1].name, arr[1].capital, user[0].player));
-      user[0].player.ownedCompanies.push(S.companies.length - 1);
-      console.log(_.where(S.companies, {founder: user[0]}));
-      socket.to(socketid).emit("update company list > cl", _.where(S.companies, {founder: user[0]}));
-    }
+    var user = S.validate(arr[0]);
   });
     
+  socket.on("create business > sv", function(arr){
+    var user = S.validate(arr[0]);
+    if(user){
+      S.createNewBusiness(user, arr[1].name, arr[1].capital, arr[1].type);
+    }
+  });
     //CHANGELOG
 
     var fs = require('fs');

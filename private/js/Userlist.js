@@ -15,6 +15,7 @@ module.exports = class Userlist extends List{
     }
     this.push(new User(userObj.id, userObj.username, userObj.userkey, socketid, 0));
   }
+  
   removeSocket(socketid){
     _.forEach(this, function(el, index, list){
       var x = el.sockets.indexOf(socketid);
@@ -26,13 +27,15 @@ module.exports = class Userlist extends List{
       }
     });
   }
-  removeUser(userid){
+  
+  remove(userid){
     _.forEach(this, function(el, index, list){
       if(el.userid == userid){
         list.splice(index, 1);
       }
     });
   }
+  
   getPlayerName(userid){
     var user = _.where(this, {userid: userid});
     return user.firstName + " " + user.lastName;

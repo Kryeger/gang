@@ -16,25 +16,48 @@ const Factionlist = require("./Factionlist.js");
 var _ = require('underscore');
 
 module.exports = class World{
+  
   constructor(){
     //TODO: queries
-    this.ul = new Userlist;
-    this.cl = new Companylist;
-    this.bl = new Businesslist;
-    this.fl = new Factionlist;
+    this._ul = new Userlist;
+    this._cl = new Companylist;
+    this._bl = new Businesslist;
+    this._fl = new Factionlist;
   }
-  createNewBusiness(ownerid, name, capital, type){
-    switch(type){
-      //TODO: make this better
-      case "brothel":
-        var nb = new Brothel(ownerid, name, capital);
-        break;
-      case "taxi":
-        var nb = new Taxi(ownerid, name, capital);
-        break;
+  
+  //UTILS
+  
+  validate(obj){
+    let id = obj.id;
+    let key = obj.key;
+    var index = _.where(S._ul, {userid: parseInt(id)});
+    console.log(id, key, index);
+    if(index[0].userkey == key){
+      return index;
     }
-    this.bl.insert(nb);
-    this.ul[ownerid].ownedBis.push(this.bl.length - 1);
-    console.log(this.bl);
+    return 0;
+  }
+  
+  //BUSINESS
+  
+  createNewBusiness(ownerid, name, capital, type){
+    let bisid;
+    if(bisid = this._bl.createNewBusiness(ownerid, name, capital, type)){
+      this._ul.findObj("id", ownerid).addOwnedBis(bisid);
+    }
+  }
+  
+  //USER
+  
+  removeUser(id){
+    this._ul.remove(id);
+  }
+  
+  removeSocket(socketid){
+    this._ul.removeSocket(socketid);
+  }
+  
+  insertSocket(userObj, socketid){
+    this._ul.insert(userObj, socketid);
   }
 }

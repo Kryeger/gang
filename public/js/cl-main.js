@@ -1,5 +1,9 @@
 var socket = io({transports: ['websocket']});
 $(function () {
+  
+  function userObj(){
+    return {id: $.cookie('userid'), key: $.cookie('userkey')};
+  }
 
   $(document).ready(function(){
 
@@ -102,7 +106,7 @@ $(function () {
                 <div class="button_1 sec">Companies</div>
               </div>
               <div class="buttonsWrap">
-                <div class="button_1 sec">Found a Business</div>
+                <div class="button_1 sec" do="createBusiness">Found a Business</div>
               </div>
             </div>
             
@@ -129,6 +133,16 @@ $(function () {
         $(".menuWindowWrap").remove();
       }
     });
+    
+      //ACTIONS
+    
+      $(document).on("click", "[do=createBusiness]", function(){
+        socket.emit("create business > sv", [userObj(), {
+          name: "biz1",
+          capital: 100,
+          type: "taxi"
+        }]);
+      });
 
       // STYLE
 

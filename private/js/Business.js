@@ -1,8 +1,8 @@
 module.exports = class Business{
   constructor(ownerid, name, capital){
-    this.name = name;
-    this.capital = capital;
-    this.ownerid = ownerid;
+    this._name = name;
+    this._capital = capital;
+    this._ownerid = ownerid;
   
     this._workers = []; //playerids for all workers
     this._assets = []; //real-estate
