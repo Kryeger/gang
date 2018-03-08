@@ -1488,13 +1488,6 @@ body {
     background-color: rgba(46,46,63, .1);
 }
 
-<<<<<<< HEAD
-/* TODO: give proper design to stuff below */
-
-.menuWindowBusinessList{
-  min-height: 600px;
-  overflow: hidden;
-=======
 .menuWindowListBox {
     background-color: rgba(15,15,16, .4);
     padding: 10px;
@@ -1574,5 +1567,4 @@ body {
 }
 .mwlbil-r-button:not(:last-child){
     margin-right: 10px;
->>>>>>> e753c46c776755efb7a36e5846c5867341c5ca03
 }
