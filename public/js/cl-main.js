@@ -35,7 +35,7 @@ $(function () {
 </div>
 </div>
 <div class="sideMenuWrap">
-          <div class="sideMenuItem icon-bug_icon" itemName="Businesses" do="openMenu" menuItem="business"></div>
+          <div class="sideMenuItem icon-business" itemName="Businesses" do="openMenu" menuItem="business"></div>
           <div class="sideMenuItem icon-edit_icon" itemName="Lorem"></div>
           <div class="sideMenuItem icon-feature_icon" itemName="Ipsum"></div>
           <div class="sideMenuItem icon-rightarrow"></div>
@@ -109,6 +109,7 @@ $(function () {
         var menuItem = $(this).attr("menuItem");
         switch(menuItem){
           case 'business':
+<<<<<<< HEAD
             $(".menuWindowWrap").append(`
 <div class="menuWindowTop">
             <div class="menuWindowTopButtons">
@@ -144,6 +145,15 @@ $(function () {
             
           </div>
             `);
+=======
+            $(".menuWindowWrap").append(Style.getBusinessWindow());
+            $(".menuWindowTop").append(Style.getBusinessListWrap());
+            //placeholder
+            for(let i = 0; i < 5; ++i){
+                $(".menuWindowListBox").append(Style.getBusinessListItem({name: "Biz #"+i}))
+            }
+            //placeholder
+>>>>>>> e753c46c776755efb7a36e5846c5867341c5ca03
             break;
         }
       }else{
@@ -161,6 +171,7 @@ $(function () {
           capital: 100,
           type: "taxi"
         }]);
+<<<<<<< HEAD
         
       $(document).on("click", "[do=refreshBusinessList]", function(){
         socket.emit("refresh business list > sv", [userObj(), {
@@ -173,6 +184,9 @@ $(function () {
       });
         
       //ACTIONS - UI
+=======
+      });
+>>>>>>> e753c46c776755efb7a36e5846c5867341c5ca03
       
       $(document).on("click", `[do=toggleUserpanelSettings]`, function(e){
           $(".tb-userpanelMenuWrap").remove();
@@ -198,5 +212,4 @@ $(function () {
   });
 });
   
-});
 //TODO: warn(string) function, similar to alert()

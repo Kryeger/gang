@@ -1157,7 +1157,13 @@ body {
 .sideMenuWrap.tgld .sideMenuItem.tgld{
   content: "";
   background-color: #dfdfee;
-  color: #0f0f10;
+}
+.sideMenuWrap.tgld .sideMenuItem.tgld:hover{
+    color: #0f0f10;
+}
+.sideMenuWrap .sideMenuItem:active{
+    -webkit-transform: scale(.8);
+    transform: scale(.8);
 }
 .sideMenuWrap.tgld .sideMenuItem:not(.tgld){
   opacity: .3;
@@ -1270,6 +1276,34 @@ body {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   overflow: auto;
+    -webkit-animation-name: mww;
+    animation-name: mww;
+    -webkit-animation-duration: .2s;
+    animation-duration: .2s;
+}
+@-webkit-keyframes mww{
+    0%{
+        opacity: 0;
+        -webkit-transform: translateX(70px) scale(1.1);
+        transform: translateX(70px) scale(1.1);
+    }
+    100%{
+        opacity: 100;
+        -webkit-transform: translateX(0) scale(1);
+        transform: translateX(0) scale(1);
+    }
+}
+@keyframes mww{
+    0%{
+        opacity: 0;
+        -webkit-transform: translateX(70px) scale(1.1);
+        transform: translateX(70px) scale(1.1);
+    }
+    100%{
+        opacity: 100;
+        -webkit-transform: translateX(0) scale(1);
+        transform: translateX(0) scale(1);
+    }
 }
 
 .menuWindowTop {
@@ -1454,9 +1488,91 @@ body {
     background-color: rgba(46,46,63, .1);
 }
 
+<<<<<<< HEAD
 /* TODO: give proper design to stuff below */
 
 .menuWindowBusinessList{
   min-height: 600px;
   overflow: hidden;
+=======
+.menuWindowListBox {
+    background-color: rgba(15,15,16, .4);
+    padding: 10px;
+    margin-top: 10px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0 0 1px rgba(40,40,49, .5);
+    box-shadow: 0 0 0 1px rgba(40,40,49, .5);
+}
+
+.menuWindowListBoxItemLine {
+    background-color: #161619;
+    -webkit-box-shadow: 0 0 0 1px rgba(40,40,49, .5);
+    box-shadow: 0 0 0 1px rgba(40,40,49, .5);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 5px 15px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 5px;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.menuWindowListBoxItemLine:not(:last-child){
+    margin-bottom: 10px;
+}
+
+.mwlbil-right {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.mwlbil-left {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.mwlbil-r-button {
+    font-size: 15px;
+    width: 32px;
+    min-width: 32px;
+    height: 32px;
+    min-height: 32px;
+    color: rgba(108,108,130, 1);
+    cursor: pointer;
+    border-radius: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+}
+.mwlbil-r-button:hover{
+    color: #dfdfee;
+    background-color: rgba(108,108,130, 0.3);
+}
+.mwlbil-r-button:not(:last-child){
+    margin-right: 10px;
+>>>>>>> e753c46c776755efb7a36e5846c5867341c5ca03
 }

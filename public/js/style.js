@@ -197,6 +197,56 @@ class StyleFuncs{
             }, expires);
         }
     }
+    
+    getBusinessWindow(){
+            return `<div class="menuWindowTop" for="business">
+    <div class="menuWindowTopButtons">
+    <div class="buttonsWrap">
+    <div class="button_1 sec">My Businesses</div>
+    <div class="button_1 sec">Businesses</div>
+    <div class="button_1 sec">My Company</div>
+    <div class="button_1 sec">Companies</div>
+    </div>
+    <div class="buttonsWrap">
+    <div class="button_1 sec" do="createBusiness">Found a Business</div>
+    </div>
+    </div>
+
+    </div>`;
+    }
+    
+    getBusinessListWrap(){
+        return `
+<!-- list wrap -->
+<div class="menuWindowListWrap" for="business">
+<div class="menuWindowSearchWrap">
+<p class="inputWrap_1" style="flex: 1">
+<label class="inputSearch_1 icon-search"></label>
+<input class="input_1" name="businessSearch" type="search">
+</p>
+<div class="buttonsWrap">
+<div class="button_1 sec icon-filter" style="margin-left: 10px;"></div>
+</div>
+</div>
+<div class="menuWindowListBox" for="business">
+
+</div>
+</div>
+`;
+    }
+    
+    getBusinessListItem(item = {}){
+        return `<div class="menuWindowListBoxItemLine">
+<div class="mwlbil-left">
+<div class="mwlbil-l-item">`+ item.name +`</div>
+</div>
+<div class="mwlbil-right">
+<div class="mwlbil-r-button icon-info"></div>
+<div class="mwlbil-r-button icon-call"></div>
+<div class="mwlbil-r-button icon-cog"></div>
+</div>
+</div>`;
+    }
 
 }
 
