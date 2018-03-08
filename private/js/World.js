@@ -47,6 +47,22 @@ module.exports = class World{
     }
   }
   
+  printBusinessList(all){
+    //TODO: maybe this should be done inside Businesslist, idk
+    var bisarr = [];
+    if(all){
+      _.forEach(this._bl, function(el, index, list){
+        bisarr.push({
+          name: el._name,
+          capital: el._capital //TODO: this should be bis value not capital, just for testing
+        })
+      });
+    } else {
+      //TODO: this
+    }
+    return bisarr;
+  }
+  
   //USER
   
   removeUser(id){

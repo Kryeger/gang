@@ -189,10 +189,19 @@ io.on('connection', function(socket){
     var user = S.validate(arr[0]);
   });
     
+  //BUSINESS
+  
   socket.on("create business > sv", function(arr){
     var user = S.validate(arr[0]);
     if(user){
       S.createNewBusiness(user, arr[1].name, arr[1].capital, arr[1].type);
+    }
+  });
+  
+  socket.on("refresh business list > sv", function(arr){
+    var user = S.validate(arr[0]);
+    if(user){
+      io.to(socketid).emit("refresh business list > cl", S.printBusinessList(arr[1].all));
     }
   });
     //CHANGELOG

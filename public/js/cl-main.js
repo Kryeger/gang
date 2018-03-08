@@ -120,6 +120,7 @@ $(function () {
               </div>
               <div class="buttonsWrap">
                 <div class="button_1 sec" do="createBusiness">Found a Business</div>
+                <div class="button_1 sec" do="refreshBusinessList">Refresh</div>
               </div>
             </div>
             
@@ -134,6 +135,11 @@ $(function () {
                   <div class="button_1 sec icon-edit_icon" style="margin-left: 10px;"></div>
                 </div>
               </div>
+              <div class="menuWindowBusinessList">
+              
+                <p>TEST</p>
+            
+              </div>
             </div>
             
           </div>
@@ -147,7 +153,7 @@ $(function () {
       }
     });
     
-      //ACTIONS
+      //ACTIONS - BUSINESS
     
       $(document).on("click", "[do=createBusiness]", function(){
         socket.emit("create business > sv", [userObj(), {
@@ -155,6 +161,18 @@ $(function () {
           capital: 100,
           type: "taxi"
         }]);
+        
+      $(document).on("click", "[do=refreshBusinessList]", function(){
+        socket.emit("refresh business list > sv", [userObj(), {
+          all: 1 //TODO: ability to show only owned businesses, not all. temp always 1
+        }]);
+      }); 
+      
+      socket.on("refresh business list > cl", function(arr){
+        console.log(arr); 
+      });
+        
+      //ACTIONS - UI
       
       $(document).on("click", `[do=toggleUserpanelSettings]`, function(e){
           $(".tb-userpanelMenuWrap").remove();
