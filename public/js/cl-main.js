@@ -35,7 +35,7 @@ $(function () {
 </div>
 </div>
 <div class="sideMenuWrap">
-          <div class="sideMenuItem icon-bug_icon" itemName="Businesses" do="openMenu" menuItem="business"></div>
+          <div class="sideMenuItem icon-business" itemName="Businesses" do="openMenu" menuItem="business"></div>
           <div class="sideMenuItem icon-edit_icon" itemName="Lorem"></div>
           <div class="sideMenuItem icon-feature_icon" itemName="Ipsum"></div>
           <div class="sideMenuItem icon-rightarrow"></div>
@@ -109,35 +109,13 @@ $(function () {
         var menuItem = $(this).attr("menuItem");
         switch(menuItem){
           case 'business':
-            $(".menuWindowWrap").append(`
-<div class="menuWindowTop">
-            <div class="menuWindowTopButtons">
-              <div class="buttonsWrap">
-                <div class="button_1 sec">My Businesses</div>
-                <div class="button_1 sec">Businesses</div>
-                <div class="button_1 sec">My Company</div>
-                <div class="button_1 sec">Companies</div>
-              </div>
-              <div class="buttonsWrap">
-                <div class="button_1 sec" do="createBusiness">Found a Business</div>
-              </div>
-            </div>
-            
-            <!-- list wrap -->
-            <div class="menuWindowListWrap">
-              <div class="menuWindowSearchWrap">
-                <p class="inputWrap_1" style="flex: 1">
-                  <label class="inputSearch_1 icon-rightarrow"></label>
-                  <input class="input_1" name="businessSearch" type="search">
-                </p>
-                <div class="buttonsWrap">
-                  <div class="button_1 sec icon-edit_icon" style="margin-left: 10px;"></div>
-                </div>
-              </div>
-            </div>
-            
-          </div>
-            `);
+            $(".menuWindowWrap").append(Style.getBusinessWindow());
+            $(".menuWindowTop").append(Style.getBusinessListWrap());
+            //placeholder
+            for(let i = 0; i < 5; ++i){
+                $(".menuWindowListBox").append(Style.getBusinessListItem({name: "Biz #"+i}))
+            }
+            //placeholder
             break;
         }
       }else{
