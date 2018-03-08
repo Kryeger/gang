@@ -158,7 +158,6 @@ $(function () {
       });
       
       $(document).on("click", `[do=toggleUserpanelSettings]`, function(e){
-          console.log(" asd");
           $(".tb-userpanelMenuWrap").remove();
           let top = $(".topbarWrap").offset().top + $(".topbarWrap").outerHeight();
           let right = $(window).outerWidth() - ($(".topbarWrap").offset().left + $(".topbarWrap").outerWidth());
@@ -182,5 +181,4 @@ $(function () {
   });
 });
   
-});
 //TODO: warn(string) function, similar to alert()
