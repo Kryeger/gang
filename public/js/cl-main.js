@@ -155,8 +155,10 @@ $(function () {
           capital: 100,
           type: "taxi"
         }]);
+      });
       
       $(document).on("click", `[do=toggleUserpanelSettings]`, function(e){
+          console.log(" asd");
           $(".tb-userpanelMenuWrap").remove();
           let top = $(".topbarWrap").offset().top + $(".topbarWrap").outerHeight();
           let right = $(window).outerWidth() - ($(".topbarWrap").offset().left + $(".topbarWrap").outerWidth());
