@@ -31,9 +31,8 @@ module.exports = class World{
     let id = obj.id;
     let key = obj.key;
     var index = _.where(S._ul, {userid: parseInt(id)});
-    console.log(id, key, index);
     if(index[0].userkey == key){
-      return index;
+      return index[0].userid;
     }
     return 0;
   }
@@ -43,7 +42,7 @@ module.exports = class World{
   createNewBusiness(ownerid, name, capital, type){
     let bisid;
     if(bisid = this._bl.createNewBusiness(ownerid, name, capital, type)){
-      this._ul.findObj("id", ownerid).addOwnedBis(bisid);
+      this._ul.findObj("userid", ownerid).player.addOwnedBis(bisid);
     }
   }
   
@@ -53,6 +52,7 @@ module.exports = class World{
     if(all){
       _.forEach(this._bl, function(el, index, list){
         bisarr.push({
+          id: el._id,
           name: el._name,
           capital: el._capital //TODO: this should be bis value not capital, just for testing
         })

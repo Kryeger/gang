@@ -209,6 +209,7 @@ class StyleFuncs{
     </div>
     <div class="buttonsWrap">
     <div class="button_1 sec" do="createBusiness">Found a Business</div>
+    <div class="button_1 sec" do="refreshBusinessList">Refresh</div>
     </div>
     </div>
 
@@ -238,7 +239,7 @@ class StyleFuncs{
     getBusinessListItem(item = {}){
         return `<div class="menuWindowListBoxItemLine">
 <div class="mwlbil-left">
-<div class="mwlbil-l-item">`+ item.name +`</div>
+<div class="mwlbil-l-item">`+ item.name + " #" + item.id + `</div>
 </div>
 <div class="mwlbil-right">
 <div class="mwlbil-r-button icon-info"></div>

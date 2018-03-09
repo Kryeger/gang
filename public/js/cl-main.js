@@ -109,48 +109,8 @@ $(function () {
         var menuItem = $(this).attr("menuItem");
         switch(menuItem){
           case 'business':
-            $(".menuWindowWrap").append(`
-<div class="menuWindowTop">
-            <div class="menuWindowTopButtons">
-              <div class="buttonsWrap">
-                <div class="button_1 sec">My Businesses</div>
-                <div class="button_1 sec">Businesses</div>
-                <div class="button_1 sec">My Company</div>
-                <div class="button_1 sec">Companies</div>
-              </div>
-              <div class="buttonsWrap">
-                <div class="button_1 sec" do="createBusiness">Found a Business</div>
-                <div class="button_1 sec" do="refreshBusinessList">Refresh</div>
-              </div>
-            </div>
-            
-            <!-- list wrap -->
-            <div class="menuWindowListWrap">
-              <div class="menuWindowSearchWrap">
-                <p class="inputWrap_1" style="flex: 1">
-                  <label class="inputSearch_1 icon-rightarrow"></label>
-                  <input class="input_1" name="businessSearch" type="search">
-                </p>
-                <div class="buttonsWrap">
-                  <div class="button_1 sec icon-edit_icon" style="margin-left: 10px;"></div>
-                </div>
-              </div>
-              <div class="menuWindowBusinessList">
-              
-                <p>TEST</p>
-            
-              </div>
-            </div>
-            
-          </div>
-            `);
             $(".menuWindowWrap").append(Style.getBusinessWindow());
             $(".menuWindowTop").append(Style.getBusinessListWrap());
-            //placeholder
-            for(let i = 0; i < 5; ++i){
-                $(".menuWindowListBox").append(Style.getBusinessListItem({name: "Biz #"+i}))
-            }
-            //placeholder
             break;
         }
       }else{
@@ -168,6 +128,7 @@ $(function () {
           capital: 100,
           type: "taxi"
         }]);
+      });
         
       $(document).on("click", "[do=refreshBusinessList]", function(){
         socket.emit("refresh business list > sv", [userObj(), {
@@ -176,7 +137,10 @@ $(function () {
       }); 
       
       socket.on("refresh business list > cl", function(arr){
-        console.log(arr); 
+        $(".menuWindowListBox").empty();
+        _.forEach(arr, function(el, index, list){
+          $(".menuWindowListBox").append(Style.getBusinessListItem(el));
+        });
       });
         
       //ACTIONS - UI
@@ -204,6 +168,5 @@ $(function () {
       });
 
   });
-});
   
 //TODO: warn(string) function, similar to alert()
