@@ -201,9 +201,19 @@ io.on('connection', function(socket){
   socket.on("refresh business list > sv", function(arr){
     var user = S.validate(arr[0]);
     if(user){
-      io.to(socketid).emit("refresh business list > cl", S.printBusinessList(arr[1].all));
+      io.to(socketid).emit("refresh business list > cl", S.printBusinessList(user, arr[1].all));
     }
   });
+  
+  socket.on("apply for job > sv", function(arr){
+    var user = S.validate(arr[0]);
+    if(user){
+      //TODO: check if the user can actually apply
+      S.hirePlayerInBusiness(user, arr[1]);
+      console.log(S._bl[0]._workers);
+    }
+  });
+  
     //CHANGELOG
 
     var fs = require('fs');

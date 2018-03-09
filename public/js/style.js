@@ -243,7 +243,7 @@ class StyleFuncs{
 </div>
 <div class="mwlbil-right">
 <div class="mwlbil-r-button icon-info"></div>
-<div class="mwlbil-r-button icon-call"></div>
+<div class="mwlbil-r-button icon-call" do="applyForJob" businessid="` + item.id + `"></div>
 <div class="mwlbil-r-button icon-cog"></div>
 </div>
 </div>`;

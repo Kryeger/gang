@@ -46,7 +46,7 @@ module.exports = class World{
     }
   }
   
-  printBusinessList(all){
+  printBusinessList(userid, all){
     //TODO: maybe this should be done inside Businesslist, idk
     var bisarr = [];
     if(all){
@@ -61,6 +61,10 @@ module.exports = class World{
       //TODO: this
     }
     return bisarr;
+  }
+  
+  hirePlayerInBusiness(userid, bisid){
+    this._bl.findObj("_id", parseInt(bisid)).hirePlayer(parseInt(userid));
   }
   
   //USER

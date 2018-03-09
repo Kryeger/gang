@@ -142,6 +142,12 @@ $(function () {
           $(".menuWindowListBox").append(Style.getBusinessListItem(el));
         });
       });
+    
+      $(document).on("click", "[do=applyForJob]", function(){
+        
+        socket.emit("apply for job > sv", [userObj(), $(this).attr("businessid")]);
+        
+      });
         
       //ACTIONS - UI
       });
